@@ -4,25 +4,23 @@
   
     
     <entry>
-      <title>test</title>
-      <link href="/2019/06/13/test_/"/>
-      <url>/2019/06/13/test_/</url>
+      <title>password_test</title>
+      <link href="/2019/06/14/password-test/"/>
+      <url>/2019/06/14/password-test/</url>
       
-        <content type="html"><![CDATA[<p>Nothing is here right now.</p>]]></content>
+        <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Password is 123" />    <label for="pass">Password is 123</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX19dj9Thq22UdptgmolCJPU5BLuu35YXsutv5gD2qRt/1/MUmNAQiybwcWCd5X+fho0TOIbX79sCJzMJOB2eM0omKwGm45gULxQ=</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       
       
       <categories>
           
-          <category> Cryptocurrency Application </category>
-          
-          <category> EOSIO </category>
+          <category> protected </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Bitcoin </tag>
+            <tag> test </tag>
             
         </tags>
       
@@ -43,6 +41,33 @@
           <category> Cryptocurrency Application </category>
           
           <category> Bitcoin </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Bitcoin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>test</title>
+      <link href="/2019/06/13/test_/"/>
+      <url>/2019/06/13/test_/</url>
+      
+        <content type="html"><![CDATA[<p>Nothing is here right now.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Cryptocurrency Application </category>
+          
+          <category> EOSIO </category>
           
       </categories>
       
