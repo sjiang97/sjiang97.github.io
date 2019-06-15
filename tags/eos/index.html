@@ -224,9 +224,123 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/06/15/common-build/">
+      common_build
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="https://shaokang.ga" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Shaokang Jiang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>06/15/2019</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class="new-meta-item category">
+    <a href="/categories/Cryptocurrency-Application/EOSIO/" rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Cryptocurrency Application&nbsp;/&nbsp;EOSIO</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="Common-error-and-solution-during-compiling-EOSIO-components"><a href="#Common-error-and-solution-during-compiling-EOSIO-components" class="headerlink" title="Common error and solution during compiling EOSIO components:"></a>Common error and solution during compiling EOSIO components:</h3><blockquote>
+<p>Doesn’t have boost or boost library is lower than required.</p>
+</blockquote>
+<p>Solution: It seems the latest version of boost is not in the ubuntu package management right now. I compiled and installed it from source to solve this issue. I installed version 1.67. But the minimum version it requires is 1.57 (I remember).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O boost_1_67_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.67.0/boost_1_67_0.tar.gz/download</span><br><span class="line">tar xzvf boost_1_67_0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> boost_1_67_0/</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/06/15/common-build/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/eos/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eos</a>
+        
+          <a href="/tags/eosio-contracts/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eosio.contracts</a>
+        
+          <a href="/tags/eos-cdt/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eos.cdt</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class="post-wrapper">
@@ -309,7 +423,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake.<br>The whole system is made up of three components in order to build local environment:</p>
+      <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>The whole system is made up of three components in order to build local environment:</p>
 <ul>
 <li><p><strong>EOS</strong> - Main net. Basic communication </p>
 </li>
@@ -389,13 +503,19 @@
     <div class="content material">
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/Cryptocurrency-Application/" href="/categories/Cryptocurrency-Application/"><div class="name">Cryptocurrency Application</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/Cryptocurrency-Application/" href="/categories/Cryptocurrency-Application/"><div class="name">Cryptocurrency Application</div><div class="badge">(3)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/Bitcoin/" href="/categories/Cryptocurrency-Application/Bitcoin/"><div class="name">Bitcoin</div><div class="badge">(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/protected/" href="/categories/protected/"><div class="name">protected</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/Hexo/" href="/categories/website/Hexo/"><div class="name">Hexo</div><div class="badge">(1)</div></a></li>
         
       </ul>
     </div>
@@ -420,7 +540,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/SQL/" style="font-size: 24px; color: #555">SQL</a> <a href="/tags/Website/" style="font-size: 24px; color: #555">Website</a> <a href="/tags/eos/" style="font-size: 14px; color: #999">eos</a> <a href="/tags/eos-cdt/" style="font-size: 14px; color: #999">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 14px; color: #999">eosio.contracts</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
+      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 24px; color: #555">SQL</a> <a href="/tags/Website/" style="font-size: 24px; color: #555">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
     </div>
   </section>
 

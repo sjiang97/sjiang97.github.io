@@ -300,7 +300,7 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake.<br>The whole system is made up of three components in order to build local environment:</p>
+          <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>The whole system is made up of three components in order to build local environment:</p>
 <ul>
 <li><p><strong>EOS</strong> - Main net. Basic communication </p>
 </li>
@@ -341,8 +341,9 @@
 <p><em>To compile EOS locally, do the following:</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/EOSIO/eos --recursive</span><br><span class="line"><span class="built_in">cd</span> eos/</span><br><span class="line">./scripts/eosio_build.sh</span><br></pre></td></tr></table></figure>
 
-<p>It is also required to install this one into root. The build script is at scripts directory right now. And it may take 3 hours to build.   </p>
-<h1 id="Do-more-at-here"><a href="#Do-more-at-here" class="headerlink" title="//Do more at here"></a>//Do more at here</h1><p><em>Then build <a href="https://github.com/EOSIO/eosio.cdt" target="_blank" rel="noopener">eosio.cdt</a>.</em></p>
+<p>It is also required to install this one into root. The build script is at scripts directory right now. And it may take up to 3 hours to build. It could be faster if you are using a multi-core computer.  </p>
+<p>It is also recommended to install it. So that it will be easier to use in the future. Just do <code>./scripts/eosio_install.sh</code>. During my test on ubuntu 18.04. The script installed successfully. But I can not run it in the shell. </p>
+<p><em>Then build <a href="https://github.com/EOSIO/eosio.cdt" target="_blank" rel="noopener">eosio.cdt</a>.</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/eosio/eosio.cdt</span><br><span class="line"><span class="built_in">cd</span> eosio.cdt</span><br><span class="line">./build.sh</span><br><span class="line">sudo ./install.sh</span><br></pre></td></tr></table></figure>
 
 <p>There should exist at least 10GB to compile this one.</p>
@@ -350,6 +351,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/EOSIO/eosio.contracts.git</span><br><span class="line">cd eosio.contracts/</span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
 
 <p>The building process of eosio.cdt and eosio.contracts is nothing special but time consuming. It might take up to 2 hours to build. And it is impossible to build using multiple cores.</p>
+<p>Some common error and solutions could be found at <a href="../../15/common-build/">here</a>.</p>
 <h5 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h5><p>You need to have an wallet in order to get start. You will have one by doing the following:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet create --to-console</span><br></pre></td></tr></table></figure>
 
@@ -439,7 +441,7 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-15T19:09:16+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-15T20:41:10+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at Jun 15, 2019</p>
@@ -473,16 +475,16 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/2019/06/14/password-test/" rel="prev" title="password_test">
+                                <a href="/2019/06/13/Bitcoin_local_network/" rel="prev" title="Build Bitcoin local network">
                                   
-                                      password_test
+                                      Build Bitcoin local network
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>test</a>
+                                    <a class="tag" href="/tags/Bitcoin/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Bitcoin</a>
                                 </h6>
                             
                         </span>
@@ -493,16 +495,16 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/06/13/Bitcoin_local_network/" rel="prev" title="Build Bitcoin local network">
+                                <a href="/2019/05/05/projects/Website for CS425 project/" rel="prev" title="Website for CS425 project">
                                     
-                                        Build Bitcoin local network
+                                        Website for CS425 project
                                     
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/Bitcoin/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Bitcoin</a>
+                                    <a class="tag" href="/tags/SQL/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>SQL</a> <a class="tag" href="/tags/Website/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Website</a>
                                 </h6>
                             
                         </span>
@@ -573,7 +575,7 @@
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some-experience-on-building-EOSIO-local-network"><span class="toc-text">Some experience on building EOSIO local network</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basic-info"><span class="toc-text">Basic info</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Build-amp-install"><span class="toc-text">Build &amp; install</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Do-more-at-here"><span class="toc-text">//Do more at here</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Initialize"><span class="toc-text">Initialize</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Procedure"><span class="toc-text">Procedure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Special-notice"><span class="toc-text">Special notice</span></a></li>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some-experience-on-building-EOSIO-local-network"><span class="toc-text">Some experience on building EOSIO local network</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basic-info"><span class="toc-text">Basic info</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Build-amp-install"><span class="toc-text">Build &amp; install</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Initialize"><span class="toc-text">Initialize</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Procedure"><span class="toc-text">Procedure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Special-notice"><span class="toc-text">Special notice</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -598,13 +600,19 @@
     <div class="content material">
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/Cryptocurrency-Application/" href="/categories/Cryptocurrency-Application/"><div class="name">Cryptocurrency Application</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/Cryptocurrency-Application/" href="/categories/Cryptocurrency-Application/"><div class="name">Cryptocurrency Application</div><div class="badge">(3)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/Bitcoin/" href="/categories/Cryptocurrency-Application/Bitcoin/"><div class="name">Bitcoin</div><div class="badge">(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/protected/" href="/categories/protected/"><div class="name">protected</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/Hexo/" href="/categories/website/Hexo/"><div class="name">Hexo</div><div class="badge">(1)</div></a></li>
         
       </ul>
     </div>
@@ -629,7 +637,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/SQL/" style="font-size: 24px; color: #555">SQL</a> <a href="/tags/Website/" style="font-size: 24px; color: #555">Website</a> <a href="/tags/eos/" style="font-size: 14px; color: #999">eos</a> <a href="/tags/eos-cdt/" style="font-size: 14px; color: #999">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 14px; color: #999">eosio.contracts</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
+      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 24px; color: #555">SQL</a> <a href="/tags/Website/" style="font-size: 24px; color: #555">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
     </div>
   </section>
 
@@ -649,7 +657,7 @@
 </header>
 
     <div class="content material">
-      
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/15/common-build/" title="common_build" rel="bookmark">common_build</a></h3></div></li></ul>
     </div>
   </section>
 
