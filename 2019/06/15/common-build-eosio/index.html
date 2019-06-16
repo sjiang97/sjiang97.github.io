@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2017 | Shaokang&#39;s Blog</title>
+  <title>Common error while building EOSIO | Shaokang&#39;s Blog</title>
   
   
 
@@ -47,7 +47,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class="cover  half">
+    <cover class="cover post half">
       
         
   <h1 class="title">Shaokang's Blog</h1>
@@ -214,22 +214,11 @@
   <div class="l_body">
     <div class='body-wrapper'>
       <div class="l_main">
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
   
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -238,11 +227,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2017/12/05/projects/Website for CS100 project/">
-      Website for CS100 project
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/06/15/common-build-eosio/">
+        Common error while building EOSIO
+      </a>
+    </h1>
+  
 
 
       
@@ -268,7 +259,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>12/05/2017</p>
+    <p>06/15/2019</p>
   </a>
 </div>
 
@@ -278,9 +269,9 @@
             
   
   <div class="new-meta-item category">
-    <a href="/categories/website/HTML/" rel="nofollow">
+    <a href="/categories/Cryptocurrency-Application/EOSIO/" rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>website&nbsp;/&nbsp;HTML</p>
+      <p>Cryptocurrency Application&nbsp;/&nbsp;EOSIO</p>
     </a>
   </div>
 
@@ -289,6 +280,8 @@
         
           
             
+  
+
 
           
         
@@ -305,41 +298,169 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="Hatefate-website-application-deployed"><a href="#Hatefate-website-application-deployed" class="headerlink" title="Hatefate website application deployed"></a>Hatefate website application deployed</h3><p>The website made by me for my CS100 project has been deployed and works normally at <a href="https://hatefate.azurewebsites.net" target="_blank" rel="noopener">This Website</a>.</p>
-<p>Source code is at <a href="/">My Github Page</a></p>
-<p>This is a website made by using SQL as database and <a href="https://materializecss.com/" target="_blank" rel="noopener">Material Theme</a> as layout. </p>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h3 id="Common-error-and-solution-during-compiling-EOSIO-components"><a href="#Common-error-and-solution-during-compiling-EOSIO-components" class="headerlink" title="Common error and solution during compiling EOSIO components:"></a>Common error and solution during compiling EOSIO components:</h3><blockquote>
+<p>Doesn’t have boost or boost library is lower than required.</p>
+</blockquote>
+<p>Solution: It seems the latest version of boost is not in the ubuntu package management right now. I compiled and installed it from source to solve this issue. I installed version 1.67. But the minimum version it requires is 1.57 (I remember).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O boost_1_67_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.67.0/boost_1_67_0.tar.gz/download</span><br><span class="line">tar xzvf boost_1_67_0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> boost_1_67_0/</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
+<p>Then, get the required libraries and setup. The one required at here is icu for boost::regex. But I installed all of them in case they will be needed in some other places. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev</span><br><span class="line">./bootstrap.sh --prefix=/usr/</span><br></pre></td></tr></table></figure>
+
+<p>Then, build it and install it:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./b2 <span class="comment"># Build it</span></span><br><span class="line">sudo ./b2 install <span class="comment"># install it</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Add the installation prefix of “eosio” to CMAKE_PREFIX_PATH or set<br>  “eosio_DIR” to a directory containing one of the above files.  If “eosio”<br>  provides a separate development package or SDK, be sure it has been<br>  installed.</p>
+</blockquote>
+<p>Solution: Error happens while compiling EOSIO.contracts.</p>
+<ol>
+<li><p>Be sure EOS is compiled and installed from source instead of ubuntu package.</p>
+</li>
+<li><p>If the EOS is compiled and installed from source. You could find the place for this Cmake file easily. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> EOS_BUILD_PATH <span class="comment"># EOS_BUILD_PATH is the directory EOS was cloned to.</span></span><br><span class="line">find . -name <span class="string">"eosio-config.cmake"</span></span><br><span class="line"><span class="built_in">export</span> eosio_DIR=<span class="string">"PATH_FOUND"</span> <span class="comment"># PATH_FOUND is the path found up by the previous command</span></span><br></pre></td></tr></table></figure>
+
+<p>The path is usually at  <code>EOS_BUILD_PATH/build/lib/cmake/eosio/</code>. And it is good to use absolute directory. </p>
+<p>And then, do <code>./build.sh</code> again.</p>
+</li>
+</ol>
+<blockquote>
+<p>Doesn’t have llvm or doesn’t have required version of llvm while building eosio.cdt. </p>
+</blockquote>
+<p>Solution: llvm package is from another repository. So, add <code>--recursive</code> while git clone.</p>
+<blockquote>
+<p>Did install EOS by using the default installing shell but can not start the program by simply run nodeos from terminal.  </p>
+</blockquote>
+<p>Solution: I find this happens on ubuntu 18.04. Use the absolute path to start server instead. Usually, the nodeos program is at <code>EOSIO_BUILD_PATH/build/bin/nodeos</code>.</p>
+
+        </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-15T21:04:15+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Jun 15, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/eos/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>eos</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/eosio-contracts/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>eosio.contracts</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/eos-cdt/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>eos.cdt</p></a></div>
+
+
+        
+      
+        
+          
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/SQL/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>SQL</a>
-        
-          <a href="/tags/Website/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>Website</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                            <h4>
+                                <a href="/2019/06/15/Hexo-Notes/" rel="prev" title="Hexo Notes">
+                                  
+                                      Hexo Notes
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/Notes/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Notes</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/14/password-test/" rel="prev" title="password_test">
+                                    
+                                        password_test
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>test</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
 
   
 
 
-	
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Common error while building EOSIO',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
@@ -350,6 +471,20 @@
           
           
             
+  <section class="widget toc-wrapper">
+    
+<header class="material">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content material">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-error-and-solution-during-compiling-EOSIO-components"><span class="toc-text">Common error and solution during compiling EOSIO components:</span></a></li></ol>
+    </div>
+  </section>
+
 
           
         
@@ -420,6 +555,18 @@
           
           
             
+  <section class="widget related_posts">
+    
+<header class="material">
+  <div><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Related Posts</div>
+  
+</header>
+
+    <div class="content material">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/15/common-run-eosio/" title="Common error while running EOSIO" rel="bookmark">Common error while running EOSIO</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/13/EOSIO_local_network/" title="Build EOSIO local network" rel="bookmark">Build EOSIO local network</a></h3></div></li></ul>
+    </div>
+  </section>
+
 
           
         
@@ -457,14 +604,6 @@
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>
@@ -551,6 +690,34 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-valine@1.3.4/js/valine.min.js"></script>
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "g0v2qyGEhGys4wGpCLsKkerW-gzGzoHsz",
+    appKey: "Sceumpu0A14EiY5RR3HtsCFx",
+    placeholder: "",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'en',
+    highlight:'false'
+  })
+  </script>
 
 
 
