@@ -307,24 +307,30 @@
 <blockquote>
 <p>Error 3080001: Account using more than allotted RAM usage<br>Error Details:<br>account eosio.ram has insufficient ram; needs 2996 bytes has 0 bytes</p>
 </blockquote>
-<p>Solution: </p>
+<p>Solution: Basically, this error happens when some account has insufficient ram. It depends on the account type you are creating. </p>
+<ul>
+<li>If the account is eosio.***, then it is a system account. If this happens, then make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts.</li>
+<li>If the account is an arbitrary name, then it is a user account(producer/worker). If this is the case, the common error is using wrong command to create new account. For account other than system account, it seems it is required to use  <code>cleos system newaccount [OPTIONS] creator name OwnerKey [ActiveKey]</code>.</li>
+</ul>
 <blockquote>
 <p>Error 3120003: Locked wallet<br>Ensure that your wallet is unlocked before using it!
 Error Details:<br>You don’t have any unlocked wallet!</p>
 </blockquote>
-<p>Solution: </p>
+<p>Solution: The wallet need to be unlocked before experiment. </p>
 <blockquote>
 <p>Error 3050001: Account name already exists<br>Error Details:<br>Cannot create account named bp1111111111, as that name is already taken</p>
 </blockquote>
-<p>Solution: </p>
+<p>Solution: Use another name.</p>
 <blockquote>
 <p>Error 3050003: eosio_assert_message assertion failure<br>Error Details:<br>assertion failure with message: cannot use transfer flag if delegating to self</p>
 </blockquote>
-<p>Solution: </p>
+<p>Solution: It seems –transfer tag for self transfer is for some old version of EOSIO. Remove it if error happens. Though the error happens, the command still get executed sometime. </p>
 <blockquote>
 <p>assertion failure with message: system contract must first be initialized</p>
 </blockquote>
-<p>Solution: </p>
+<p>Solution: Make sure <code>eosio.msig</code> is a privileged account and Initialize system account. To do those:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio setpriv <span class="string">'["eosio.msig", 1]'</span> -p eosio@active</span><br><span class="line"></span><br><span class="line">cleos push action eosio init <span class="string">'["0", "4,SYS"]'</span> -p eosio@active</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>Not producing block because I don’t have the private key for EOS5ks6trFhN8xz5mxaDAwQy7qJdjHhNwQbLca6wkYuRKwvGDUAPG</p>
 </blockquote>
@@ -340,10 +346,10 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-16T22:30:25+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-17T09:11:03+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Jun 16, 2019</p>
+    <p>last updated at Jun 17, 2019</p>
   </a>
 </div>
 
@@ -486,7 +492,7 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
         
           <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/protected/" href="/categories/protected/"><div class="name">protected</div><div class="badge">(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/protected/" href="/categories/protected/"><div class="name">protected</div><div class="badge">(0)</div></a></li>
         
           <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(3)</div></a></li>
         
@@ -517,7 +523,7 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
 </header>
 
     <div class="content material">
-      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 19px; color: #777">SQL</a> <a href="/tags/Website/" style="font-size: 19px; color: #777">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
+      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 19px; color: #777">SQL</a> <a href="/tags/Website/" style="font-size: 19px; color: #777">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a>
     </div>
   </section>
 
@@ -537,7 +543,7 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/15/common-build-eosio/" title="Common error while building EOSIO" rel="bookmark">Common error while building EOSIO</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/13/EOSIO_local_network/" title="Build EOSIO local network" rel="bookmark">Build EOSIO local network</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/13/EOSIO_local_network/" title="Build EOSIO local network" rel="bookmark">Build EOSIO local network</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/15/common-build-eosio/" title="Common error while building EOSIO" rel="bookmark">Common error while building EOSIO</a></h3></div></li></ul>
     </div>
   </section>
 
