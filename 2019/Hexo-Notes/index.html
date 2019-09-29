@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>common_build | Shaokang&#39;s Blog</title>
+  <title>Hexo Notes | Shaokang&#39;s Blog</title>
+  
+  <meta name="keywords" content="Blog">
   
   
 
@@ -229,8 +231,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/06/15/common-build/">
-        common_build
+      <a href="/2019/Hexo-Notes/">
+        Hexo Notes
       </a>
     </h1>
   
@@ -269,9 +271,9 @@
             
   
   <div class="new-meta-item category">
-    <a href="/categories/Cryptocurrency-Application/EOSIO/" rel="nofollow">
+    <a href="/categories/website/Hexo/" rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Cryptocurrency Application&nbsp;/&nbsp;EOSIO</p>
+      <p>website&nbsp;/&nbsp;Hexo</p>
     </a>
   </div>
 
@@ -300,38 +302,8 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="Common-error-and-solution-during-compiling-EOSIO-components"><a href="#Common-error-and-solution-during-compiling-EOSIO-components" class="headerlink" title="Common error and solution during compiling EOSIO components:"></a>Common error and solution during compiling EOSIO components:</h3><blockquote>
-<p>Doesn’t have boost or boost library is lower than required.</p>
-</blockquote>
-<p>Solution: It seems the latest version of boost is not in the ubuntu package management right now. I compiled and installed it from source to solve this issue. I installed version 1.67. But the minimum version it requires is 1.57 (I remember).</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O boost_1_67_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.67.0/boost_1_67_0.tar.gz/download</span><br><span class="line">tar xzvf boost_1_67_0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> boost_1_67_0/</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>Then, get the required libraries and setup. The one required at here is icu for boost::regex. But I installed all of them in case they will be needed in some other places. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev</span><br><span class="line">./bootstrap.sh --prefix=/usr/</span><br></pre></td></tr></table></figure>
-
-<p>Then, build it and install it:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./b2 <span class="comment"># Build it</span></span><br><span class="line">sudo ./b2 install <span class="comment"># install it</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Add the installation prefix of “eosio” to CMAKE_PREFIX_PATH or set<br>  “eosio_DIR” to a directory containing one of the above files.  If “eosio”<br>  provides a separate development package or SDK, be sure it has been<br>  installed.</p>
-</blockquote>
-<p>Solution: Error happens while compiling EOSIO.contracts.</p>
-<ol>
-<li><p>Be sure EOS is compiled and installed from source instead of ubuntu package.</p>
-</li>
-<li><p>If the EOS is compiled and installed from source. You could find the place for this Cmake file easily. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> EOS_BUILD_DIRECTORY <span class="comment"># EOS_BUILD_DIRECTORY is the directory EOS was cloned to.</span></span><br><span class="line">find . -name <span class="string">"eosio-config.cmake"</span></span><br><span class="line"><span class="built_in">export</span> eosio_DIR=<span class="string">"PATH_FOUND"</span> <span class="comment"># PATH_FOUND is the path found up by the previous command</span></span><br></pre></td></tr></table></figure>
-
-<p>The path is usually at  <code>EOS_BUILD_DIRECTORY/build/lib/cmake/eosio/</code>. And it is good to use absolute directory. </p>
-<p>And then, do <code>./build.sh</code> again.</p>
-</li>
-</ol>
-<blockquote>
-<p>Doesn’t have llvm or doesn’t have required version of llvm while building eosio.cdt. </p>
-</blockquote>
-<p>Solution: llvm package is from another repository. So, add <code>--recursive</code> while git clone.</p>
+          <h3 id="Some-notes-for-Hexo"><a href="#Some-notes-for-Hexo" class="headerlink" title="Some notes for Hexo"></a>Some notes for Hexo</h3><p>HEXO is always case sensitive whiling redirecting pages and setting up file properties(yaml).</p>
+<p>Hexo is not good for converting table to html format. The solution is to use html format table directly. </p>
 
         </div>
         
@@ -343,10 +315,10 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-15T20:35:38+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-18T00:04:49-05:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Jun 15, 2019</p>
+    <p>last updated at Jun 18, 2019</p>
   </a>
 </div>
 
@@ -355,7 +327,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/eos/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>eos</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/eosio-contracts/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>eosio.contracts</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/eos-cdt/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>eos.cdt</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Notes/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>Notes</p></a></div>
 
 
         
@@ -377,16 +349,16 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/2019/06/15/Hexo-Notes/" rel="prev" title="Hexo Notes">
+                                <a href="/2019/common-run-eosio/" rel="prev" title="Common error while running EOSIO">
                                   
-                                      Hexo Notes
+                                      Common error while running EOSIO
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/Notes/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Notes</a>
+                                    <a class="tag" href="/tags/eos/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos</a> <a class="tag" href="/tags/eosio-contracts/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eosio.contracts</a> <a class="tag" href="/tags/eos-cdt/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos.cdt</a>
                                 </h6>
                             
                         </span>
@@ -397,16 +369,16 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/06/14/password-test/" rel="prev" title="password_test">
+                                <a href="/2019/common-build-eosio/" rel="prev" title="Common error while building EOSIO">
                                     
-                                        password_test
+                                        Common error while building EOSIO
                                     
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>test</a>
+                                    <a class="tag" href="/tags/eos/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos</a> <a class="tag" href="/tags/eosio-contracts/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eosio.contracts</a> <a class="tag" href="/tags/eos-cdt/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos.cdt</a>
                                 </h6>
                             
                         </span>
@@ -451,7 +423,7 @@
 
   <script>
     window.subData = {
-      title: 'common_build',
+      title: 'Hexo Notes',
       tools: true
     }
   </script>
@@ -477,7 +449,7 @@
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-error-and-solution-during-compiling-EOSIO-components"><span class="toc-text">Common error and solution during compiling EOSIO components:</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some-notes-for-Hexo"><span class="toc-text">Some notes for Hexo</span></a></li></ol>
     </div>
   </section>
 
@@ -502,13 +474,13 @@
     <div class="content material">
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/Cryptocurrency-Application/" href="/categories/Cryptocurrency-Application/"><div class="name">Cryptocurrency Application</div><div class="badge">(3)</div></a></li>
+          <li><a class="flat-box" title="/categories/Action-plan/" href="/categories/Action-plan/"><div class="name">Action plan</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Cryptocurrency-Application/" href="/categories/Cryptocurrency-Application/"><div class="name">Cryptocurrency Application</div><div class="badge">(4)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/Bitcoin/" href="/categories/Cryptocurrency-Application/Bitcoin/"><div class="name">Bitcoin</div><div class="badge">(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/protected/" href="/categories/protected/"><div class="name">protected</div><div class="badge">(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(3)</div></a></li>
         
           <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(3)</div></a></li>
         
@@ -539,7 +511,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 24px; color: #555">SQL</a> <a href="/tags/Website/" style="font-size: 24px; color: #555">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
+      <a href="/tags/AGROECOL103/" style="font-size: 14px; color: #999">AGROECOL103</a> <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 19px; color: #777">SQL</a> <a href="/tags/Website/" style="font-size: 19px; color: #777">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a>
     </div>
   </section>
 
@@ -559,7 +531,7 @@
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/06/13/EOSIO_local_network/" title="Build EOSIO local network" rel="bookmark">Build EOSIO local network</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/" title="Website for CS425 project" rel="bookmark">Website for CS425 project</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2017/" title="Website for CS100 project" rel="bookmark">Website for CS100 project</a></h3></div></li></ul>
     </div>
   </section>
 
@@ -587,7 +559,7 @@
         
       
         
-          <a href="https://github.com/" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="https://github.com/ShaokangJiang" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
