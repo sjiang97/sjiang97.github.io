@@ -305,7 +305,7 @@
           <h3 id="Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components"><a href="#Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components" class="headerlink" title="Common error and solution during running and building connections between EOSIO components:"></a>Common error and solution during running and building connections between EOSIO components:</h3><blockquote>
 <p>Error 3050000: Action validate exception<br>Error Details:<br>inline action’s authorizing actor eosio.ram does not exist</p>
 </blockquote>
-<p>Solution: Make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts. Otherwise this error will show up when creating block producer or voter. <a id="more"></a> For more details, see <a href="../../13/EOSIO_local_network/#3">here</a> or <a href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence#section--1-7-create-important-system-accounts-" target="_blank" rel="noopener">here</a>. </p>
+<p>Solution: Make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts. Otherwise this error will show up when creating block producer or voter. <a id="more"></a> For more details, see <a href="../EOSIO_local_network/#3">here</a> or <a href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence#section--1-7-create-important-system-accounts-" target="_blank" rel="noopener">here</a>. </p>
 <blockquote>
 <p>Error 3080001: Account using more than allotted RAM usage<br>Error Details:<br>account eosio.ram has insufficient ram; needs 2996 bytes has 0 bytes</p>
 </blockquote>
@@ -336,7 +336,7 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
 <blockquote>
 <p>Not producing block because I don’t have the private key for EOS5ks6trFhN8xz5mxaDAwQy7qJdjHhNwQbLca6wkYuRKwvGDUAPG</p>
 </blockquote>
-<p>Solution: This message happens when running the very first node in the network, who will produce the genesis block. Make sure the EOS_PUB_DEV_KEY in signature-provider in genesis_start.sh is the same as the EOS_PUB_DEV_KEY in genesis.json. And EOS_PRIV_DEV_KEY is the private key of this public key. For those two files. genesis_start.sh is a file contain the information for the genesis block. genesis_start.sh is a file to start the very first node in the network. For more details, see <a href="../../13/EOSIO_local_network/#Build-local-test-network">here</a>.</p>
+<p>Solution: This message happens when running the very first node in the network, who will produce the genesis block. Make sure the EOS_PUB_DEV_KEY in signature-provider in genesis_start.sh is the same as the EOS_PUB_DEV_KEY in genesis.json. And EOS_PRIV_DEV_KEY is the private key of this public key. For those two files. genesis_start.sh is a file contain the information for the genesis block. genesis_start.sh is a file to start the very first node in the network. For more details, see <a href="../EOSIO_local_network/#Build-local-test-network">here</a>.</p>
 
         </div>
         
@@ -348,10 +348,10 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-19T01:52:31-05:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-25T18:33:42-06:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Jun 19, 2019</p>
+    <p>last updated at Nov 25, 2019</p>
   </a>
 </div>
 

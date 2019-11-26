@@ -353,7 +353,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/EOSIO/eosio.contracts.git</span><br><span class="line">cd eosio.contracts/</span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
 
 <p>The building process of eosio.cdt and eosio.contracts is nothing special but time consuming. It might take up to 2 hours to build. And it is impossible to build using multiple cores.</p>
-<p>Some common error and solutions could be found at <a href="../../15/common-build-eosio/">here</a>.</p>
+<p>Some common error and solutions could be found at <a href="../common-build-eosio/">here</a>.</p>
 <h5 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h5><p>You need to have an wallet in order to get start. You will have one by doing the following:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet create --to-console</span><br></pre></td></tr></table></figure>
 
@@ -451,10 +451,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos <span class="built_in">set</span> contract eosio build/contracts/eosio.bios</span><br></pre></td></tr></table></figure>
 
 <div id="3"></div>
+3. **Create necessary accounts.**
 
-<ol start="3">
-<li><strong>Create necessary accounts.</strong></li>
-</ol>
 <p>The list of accounts required is provided by official:</p>
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; eosio.bpay</span><br><span class="line">&gt; eosio.msig</span><br><span class="line">&gt; eosio.names</span><br><span class="line">&gt; eosio.ram</span><br><span class="line">&gt; eosio.ramfee</span><br><span class="line">&gt; eosio.saving</span><br><span class="line">&gt; eosio.stake</span><br><span class="line">&gt; eosio.token</span><br><span class="line">&gt; eosio.vpay</span><br><span class="line">&gt; eosio.rex</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
@@ -552,7 +550,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleos system listproducers </span><br><span class="line">cleos get table eosio eosio voters</span><br></pre></td></tr></table></figure>
 
-<p>Some error and solutions I found is at <a href="../../15/common-run-eosio/">here</a>. </p>
+<p>Some error and solutions I found is at <a href="../common-run-eosio/">here</a>. </p>
 <h4 id="Special-notice"><a href="#Special-notice" class="headerlink" title="Special notice"></a>Special notice</h4><ul>
 <li>EOS.CONTRACT is based on locally compiled EOS. </li>
 <li>To compile EOS locally, it has to use git clone to clone it from github. You can not download from source and compile.</li>
@@ -570,10 +568,10 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-19T01:54:38-05:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-25T18:34:58-06:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Jun 19, 2019</p>
+    <p>last updated at Nov 25, 2019</p>
   </a>
 </div>
 
@@ -604,16 +602,16 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/2019/common-build-eosio/" rel="prev" title="Common error while building EOSIO">
+                                <a href="/2019/Bitcoin_local_network/" rel="prev" title="Build Bitcoin local network">
                                   
-                                      Common error while building EOSIO
+                                      Build Bitcoin local network
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/eos/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos</a> <a class="tag" href="/tags/eosio-contracts/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eosio.contracts</a> <a class="tag" href="/tags/eos-cdt/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos.cdt</a>
+                                    <a class="tag" href="/tags/Bitcoin/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Bitcoin</a>
                                 </h6>
                             
                         </span>
@@ -624,16 +622,16 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/Bitcoin_local_network/" rel="prev" title="Build Bitcoin local network">
+                                <a href="/2019/projects/Website for CS425 project/" rel="prev" title="Website for CS425 project">
                                     
-                                        Build Bitcoin local network
+                                        Website for CS425 project
                                     
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/Bitcoin/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Bitcoin</a>
+                                    <a class="tag" href="/tags/SQL/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>SQL</a> <a class="tag" href="/tags/Website/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Website</a>
                                 </h6>
                             
                         </span>
@@ -786,7 +784,7 @@
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-run-eosio/" title="Common error while running EOSIO" rel="bookmark">Common error while running EOSIO</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-build-eosio/" title="Common error while building EOSIO" rel="bookmark">Common error while building EOSIO</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-build-eosio/" title="Common error while building EOSIO" rel="bookmark">Common error while building EOSIO</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-run-eosio/" title="Common error while running EOSIO" rel="bookmark">Common error while running EOSIO</a></h3></div></li></ul>
     </div>
   </section>
 
