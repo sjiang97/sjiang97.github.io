@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/about/index.html</loc>
+    
+    <lastmod>2019-12-23T04:34:31.857Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shaokang.ga/2019/projects/CS524-optimization-project/</loc>
+    
+    <lastmod>2019-12-23T04:33:27.865Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2019/EOSIO_local_network/</loc>
     
     <lastmod>2019-11-26T00:34:58.062Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://shaokang.ga/2019/common-run-eosio/</loc>
     
     <lastmod>2019-11-26T00:33:42.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/about/index.html</loc>
-    
-    <lastmod>2019-06-19T07:26:10.713Z</lastmod>
     
   </url>
   

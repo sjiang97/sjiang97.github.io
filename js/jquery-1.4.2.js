@@ -3441,7 +3441,7 @@ function getText( elems ) {
 	// We're going to inject a fake input element with a specified name
 	var form = document.createElement("div"),
 		id = "script" + (new Date).getTime();
-	form.innerHTML = "<a name="" + id + "">";
+	form.innerHTML = "<a name + id "">";
 
 	// Inject it into the root element, check its status, and remove it quickly
 	var root = document.documentElement;

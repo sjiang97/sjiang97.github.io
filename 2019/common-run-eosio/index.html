@@ -29,6 +29,7 @@
   <link href="/css/table.css" type="text/css" rel="stylesheet" media="screen,projection">
   
 
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
   
 
   
@@ -39,6 +40,11 @@
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
     }
+  </script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   </script>
 
   
@@ -311,12 +317,11 @@
 </blockquote>
 <p>Solution: Basically, this error happens when some account has insufficient ram. It depends on the account type you are creating. </p>
 <ul>
-<li>If the account is eosio.***, then it is a system account. If this happens, then make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts.</li>
+<li>If the account is eosio.<em>*</em>, then it is a system account. If this happens, then make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts.</li>
 <li>If the account is an arbitrary name, then it is a user account(producer/worker). If this is the case, the common error is using wrong command to create new account. For account other than system account, it seems it is required to use  <code>cleos system newaccount [OPTIONS] creator name OwnerKey [ActiveKey]</code>.</li>
 </ul>
 <blockquote>
-<p>Error 3120003: Locked wallet<br>Ensure that your wallet is unlocked before using it!
-Error Details:<br>You don’t have any unlocked wallet!</p>
+<p>Error 3120003: Locked wallet<br>Ensure that your wallet is unlocked before using it!<br>Error Details:<br>You don’t have any unlocked wallet!</p>
 </blockquote>
 <p>Solution: The wallet need to be unlocked before experiment. </p>
 <blockquote>
@@ -326,13 +331,12 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
 <blockquote>
 <p>Error 3050003: eosio_assert_message assertion failure<br>Error Details:<br>assertion failure with message: cannot use transfer flag if delegating to self</p>
 </blockquote>
-<p>Solution: It seems –transfer tag for self transfer is for some old version of EOSIO. Remove it if error happens. Though the error happens, the command still get executed sometime. </p>
+<p>Solution: It seems —transfer tag for self transfer is for some old version of EOSIO. Remove it if error happens. Though the error happens, the command still get executed sometime. </p>
 <blockquote>
 <p>assertion failure with message: system contract must first be initialized</p>
 </blockquote>
 <p>Solution: Make sure <code>eosio.msig</code> is a privileged account and Initialize system account. To do those:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio setpriv <span class="string">'["eosio.msig", 1]'</span> -p eosio@active</span><br><span class="line"></span><br><span class="line">cleos push action eosio init <span class="string">'["0", "4,SYS"]'</span> -p eosio@active</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>Not producing block because I don’t have the private key for EOS5ks6trFhN8xz5mxaDAwQy7qJdjHhNwQbLca6wkYuRKwvGDUAPG</p>
 </blockquote>
@@ -377,6 +381,25 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
         
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                            <h4>
+                                <a href="/2019/projects/CS524-optimization-project/" rel="prev" title="CS524 optimization project">
+                                  
+                                      CS524 optimization project
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/GAMS/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>GAMS</a> <a class="tag" href="/tags/CPLEX/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>CPLEX</a> <a class="tag" href="/tags/MIP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>MIP</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -494,6 +517,8 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
         
           <li><a class="flat-box child" title="/categories/Cryptocurrency-Application/EOSIO/" href="/categories/Cryptocurrency-Application/EOSIO/"><div class="name">EOSIO</div><div class="badge">(3)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/optimization/" href="/categories/optimization/"><div class="name">optimization</div><div class="badge">(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(3)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(2)</div></a></li>
@@ -523,7 +548,7 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
 </header>
 
     <div class="content material">
-      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 19px; color: #777">SQL</a> <a href="/tags/Website/" style="font-size: 19px; color: #777">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a>
+      <a href="/tags/Bitcoin/" style="font-size: 14px; color: #999">Bitcoin</a> <a href="/tags/CPLEX/" style="font-size: 14px; color: #999">CPLEX</a> <a href="/tags/GAMS/" style="font-size: 14px; color: #999">GAMS</a> <a href="/tags/MIP/" style="font-size: 14px; color: #999">MIP</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/SQL/" style="font-size: 19px; color: #777">SQL</a> <a href="/tags/Website/" style="font-size: 19px; color: #777">Website</a> <a href="/tags/eos/" style="font-size: 24px; color: #555">eos</a> <a href="/tags/eos-cdt/" style="font-size: 24px; color: #555">eos.cdt</a> <a href="/tags/eosio-contracts/" style="font-size: 24px; color: #555">eosio.contracts</a>
     </div>
   </section>
 
@@ -572,6 +597,11 @@ Error Details:<br>You don’t have any unlocked wallet!</p>
       
         
           <a href="https://github.com/ShaokangJiang" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/sjiang97" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
