@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/2019/projects/CS524-optimization-project/</loc>
+    
+    <lastmod>2019-12-26T02:16:32.558Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2019/projects/VoiceInput/</loc>
     
     <lastmod>2019-12-26T02:03:40.409Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://shaokang.ga/2019/projects/AutoCommenter/</loc>
     
     <lastmod>2019-12-26T02:03:24.816Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/2019/projects/CS524-optimization-project/</loc>
-    
-    <lastmod>2019-12-26T01:36:04.327Z</lastmod>
     
   </url>
   
