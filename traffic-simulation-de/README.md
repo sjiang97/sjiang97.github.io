@@ -1,6 +1,12 @@
 # traffic-simulation.de
 Source code for the interactive Javascript simulation at  [www.traffic-simulation.de](http://www.traffic-simulation.de)
 
+## TODO
+- direction of vehicles
+- find appropriate way to store vehicle related value.
+- clean file not need
+- add download function
+
 ## Running the Simulation
 
 This simulation uses JavaScript together with html5.
