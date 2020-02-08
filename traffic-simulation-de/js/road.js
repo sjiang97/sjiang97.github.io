@@ -134,6 +134,9 @@ function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
     // lane or v is transversal coordinate
 
   this.veh=[];
+  this.lastTime = -10;
+  this.waitTime = 10;
+  this.textarea = "";
   this.initRegularVehicles(densInitPerLane,fracTruck);
 /*
     var nveh=Math.floor(this.nLanes*this.roadLen*densInitPerLane);
@@ -2165,8 +2168,14 @@ road.prototype.updateSpeedPositions=function(){
     if(this.isRing &&(this.veh[i].u>this.roadLen)){
       this.veh[i].u -= this.roadLen;
     }
-document.getElementById("testarea_1").value = document.getElementById("testarea_1").value+ "\n"+ "Time: "+ document.getElementById("time_exchange").value +" id: "+ i + "Speed: "+ this.veh[i].speed + "lane" + this.veh[i].lane;
-  }
+	  var a = document.getElementById("time_exchange").value;
+
+	  this.textarea+="\nTime: "+ a +" id: "+ i + "Speed: "+ Math.round(3.6*this.veh[i].speed) + "lane" + this.veh[i].lane;
+	 if(a-this.lastTime>this.waitTime){ 
+	  document.getElementById("testarea_1").value = this.textarea;
+	 this.lastTime= a;
+	 }
+	 }
 
   this.sortVehicles(); // positional update may have disturbed order
   this.updateEnvironment();// crucial!!

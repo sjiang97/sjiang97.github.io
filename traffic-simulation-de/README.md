@@ -3,9 +3,12 @@ Source code for the interactive Javascript simulation at  [www.traffic-simulatio
 
 ## TODO
 - direction of vehicles
-- find appropriate way to store vehicle related value.
+- find appropriate way to store vehicle related value.<!--calculate x y location in road.js-->
 - clean file not need
 - add download function
+- optimize memory usage
+
+<!--or change data after a period of time put it from textbox to another area or use new data structures to store data, use anotger local variable to monitor what should be in the textarea and tge text area only represent this variable https://segmentfault.com/q/1010000006205674-->
 
 ## Running the Simulation
 
