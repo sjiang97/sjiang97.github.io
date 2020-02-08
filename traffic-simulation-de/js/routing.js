@@ -585,7 +585,7 @@ function updateSim(){
     mainroad.updateLastLCtimes(dt);
     mainroad.calcAccelerations();  
     mainroad.changeLanes();         
-    mainroad.updateSpeedPositions();
+    mainroad.updateSpeedPositions("MainRoad");
     mainroad.updateBCdown();
     var route=(Math.random()<fracOff) ? route2 : route1;
     mainroad.updateBCup(qIn,dt,route); // qIn=total inflow, route opt. arg.
@@ -593,7 +593,7 @@ function updateSim(){
 
     ramp.updateLastLCtimes(dt); // needed since LC from main road!!
     ramp.calcAccelerations();  
-    ramp.updateSpeedPositions();
+    ramp.updateSpeedPositions("Ramp");
     ramp.updateBCdown();
 
     var du_antic=20; //shift anticipation decision point upstream by du_antic

@@ -374,7 +374,7 @@ function updateSim(){
     mainroad.updateLastLCtimes(dt);
     mainroad.calcAccelerations();  
     mainroad.changeLanes();         
-    mainroad.updateSpeedPositions();
+    mainroad.updateSpeedPositions("Main");
     mainroad.updateBCdown();
     mainroad.updateBCup(qIn,dt); // argument=total inflow
 

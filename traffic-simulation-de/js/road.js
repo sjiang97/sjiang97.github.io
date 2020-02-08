@@ -134,9 +134,9 @@ function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
     // lane or v is transversal coordinate
 
   this.veh=[];
-  this.lastTime = -10;
-  this.waitTime = 10;
-  this.textarea = "";
+  this.lastTime = -5;
+  this.waitTime = 5;
+  this.textarea = [];
   this.initRegularVehicles(densInitPerLane,fracTruck);
 /*
     var nveh=Math.floor(this.nLanes*this.roadLen*densInitPerLane);
@@ -237,6 +237,9 @@ road.prototype.initRegularVehicles=function(densityPerLane,fracTruck){
   var nVehOld=this.veh.length;
   var vehPlus=[];
   var iveh=0;
+	  this.lastTime = -5;         
+	this.waitTime = 5; 
+	this.textarea = [];
   for(var i=0; i<nvehPlus; i++){
 
         // position trucks mainly on the right lane nLanes-1
@@ -2134,7 +2137,7 @@ road.prototype.updateEgoVeh=function(externalEgoVeh){
 // updated in this. updateEgoVeh
 
 
-road.prototype.updateSpeedPositions=function(){
+road.prototype.updateSpeedPositions=function(rType){
 
   // longitudinal and lateral position and speed update
   // for non-ego vehicles and non-obstacles
@@ -2170,9 +2173,10 @@ road.prototype.updateSpeedPositions=function(){
     }
 	  var a = document.getElementById("time_exchange").value;
 
-	  this.textarea+="\nTime: "+ a +" id: "+ i + "Speed: "+ Math.round(3.6*this.veh[i].speed) + "lane" + this.veh[i].lane;
+	  this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " v: "+this.veh[i].v+ " u:"+this.veh[i].u);
 	 if(a-this.lastTime>this.waitTime){ 
-	  document.getElementById("testarea_1").value = this.textarea;
+	  document.getElementById("testarea_1").value += this.textarea.toString();
+	this.textarea.length = 0;
 	 this.lastTime= a;
 	 }
 	 }

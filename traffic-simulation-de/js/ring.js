@@ -291,7 +291,7 @@ function updateSim(){
     mainroad.updateLastLCtimes(dt);
     mainroad.calcAccelerations();  
     mainroad.changeLanes();         
-    mainroad.updateSpeedPositions();
+    mainroad.updateSpeedPositions("Main");
 
     //if(itime<2){mainroad.writeVehicleLongModels();}
     //if(itime<2){mainroad.writeVehicleLCModels();}

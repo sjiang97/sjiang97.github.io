@@ -600,7 +600,7 @@ function updateSim(){
   }
 
   for(var i=0; i<network.length; i++){ 
-    network[i].updateSpeedPositions();
+    network[i].updateSpeedPositions("Network at: "+i);
     network[i].updateBCdown(); // just removes veh (!=ringroad) if u>roadLen 
   }
 

@@ -671,9 +671,9 @@ function updateSim(){
 
      // !! motion at the end
 
-    mainroad.updateSpeedPositions();
+    mainroad.updateSpeedPositions("Main");
     for(var i=0; i<arm.length; i++){
-        arm[i].updateSpeedPositions();
+        arm[i].updateSpeedPositions("Arm at"+i);
 
         // !!! forcibly move vehicles behind virtual obstacle vehicle 0
         // if they cross it (may happen for very low a, T)
