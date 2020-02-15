@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/2019/projects/CS524-optimization-project/</loc>
+    
+    <lastmod>2020-02-15T04:47:10.594Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2020/projects/Modified-simulator/</loc>
     
     <lastmod>2020-02-15T04:46:09.082Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://shaokang.ga/about/index.html</loc>
     
     <lastmod>2020-01-24T00:37:08.623Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/2019/projects/CS524-optimization-project/</loc>
-    
-    <lastmod>2019-12-26T02:16:32.558Z</lastmod>
     
   </url>
   
