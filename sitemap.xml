@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/2019/Hexo-Notes/</loc>
+    
+    <lastmod>2020-05-04T19:24:16.700Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2019/projects/AutoCommenter/</loc>
     
     <lastmod>2020-05-04T19:19:33.490Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://shaokang.ga/2019/Bitcoin_local_network/</loc>
     
     <lastmod>2019-06-19T06:50:21.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/2019/Hexo-Notes/</loc>
-    
-    <lastmod>2019-06-18T05:04:49.027Z</lastmod>
     
   </url>
   
