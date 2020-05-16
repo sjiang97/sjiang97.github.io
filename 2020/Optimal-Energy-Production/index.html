@@ -449,7 +449,7 @@
 <p>B <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∈</mo><msup><mrow><mi mathvariant="double-struck">R</mi></mrow><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">\in \mathbb{R}^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.880431em;vertical-align:-0.0391em;"></span><span class="base textstyle uncramped"><span class="mrel">∈</span><span class><span class="mord textstyle uncramped"><span class="mord mathbb">R</span></span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> : The amount of energy battery has. With <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">B_0=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05017em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span></span></span></span>user defined, could be 70% of the battery size</p>
 <p>B <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∈</mo><mrow><mi mathvariant="double-struck">R</mi></mrow></mrow><annotation encoding="application/x-tex">\in \mathbb{R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68889em;"></span><span class="strut bottom" style="height:0.72799em;vertical-align:-0.0391em;"></span><span class="base textstyle uncramped"><span class="mrel">∈</span><span class="mord textstyle uncramped"><span class="mord mathbb">R</span></span></span></span></span> : Constant to represent the battery charging limitation.</p>
 <h3 id="optimization-model-4"><a class="markdownIt-Anchor" href="#optimization-model-4"></a> Optimization Model</h3>
-\begin{equation}\begin{split}&\text{Minimize } & \sum_{i,j}S_{ij}\\&\text{Subject to } & C_{ij}=S_{ij}-S_{i-1,j}+1 \ \forall i\in \{2,\cdots,n\}\\& & 0 \le C_{ij} \le 2 \ \forall i\in N j\in J\\& & 0 \le S_{ij} \le 1 \ \forall i\in N j\in J\\& & B_i\ge B \  \forall i\in \{2,\cdots, n\}\\& & B_i=B_{i-1}+\sum_{j\in J}W_{ij}S_{ij}-\sum_{j\in J}c_jC_{ij}S_{ij}-U_i\end{split}\end{equation}
+\begin{equation}\begin{split}&\text{Minimize } & \sum_{i,j}C_{ij}S_{ij}\\&\text{Subject to } & C_{ij}=S_{ij}-S_{i-1,j}+1 \ \forall i\in \{2,\cdots,n\}\\& & 0 \le C_{ij} \le 2 \ \forall i\in N j\in J\\& & 0 \le S_{ij} \le 1 \ \forall i\in N j\in J\\& & B_i\ge B \  \forall i\in \{2,\cdots, n\}\\& & B_i=B_{i-1}+\sum_{j\in J}W_{ij}S_{ij}-\sum_{j\in J}c_jC_{ij}S_{ij}-U_i\end{split}\end{equation}
 
 <p>Use MIP to solve it</p>
 <p>We could use default value if no applied answer found</p>
@@ -497,7 +497,15 @@
 <p>Battery has some specific charging and discharging curve, like this: <img src="https://i.stack.imgur.com/eltx3.png" alt></p>
 <h2 id="need-discussion"><a class="markdownIt-Anchor" href="#need-discussion"></a> Need discussion</h2>
 <ul>
-<li>Do we know normal user consumption of energy?</li>
+<li>
+<p>Do we know normal user consumption of energy?</p>
+</li>
+<li>
+<p>If no history data provided, then use fixed threshold=energy consumed by equipment in normal life.</p>
+</li>
+<li>
+<p>Another thought: Use a single line and calculate how many value is below the line, estimate and find the least number of turning on/off (Not possible, as turning off is a point but wind might remain low for a duration of time)</p>
+</li>
 </ul>
 
         </div>
@@ -510,7 +518,7 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-16T12:37:04-05:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-16T12:53:24-05:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at May 16, 2020</p>
