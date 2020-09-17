@@ -308,43 +308,59 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>The whole system is made up of three components in order to build local environment:</p>
+          <h3 id="some-experience-on-building-eosio-local-network"><a class="markdownIt-Anchor" href="#some-experience-on-building-eosio-local-network"></a> Some experience on building EOSIO local network</h3>
+<h4 id="basic-info"><a class="markdownIt-Anchor" href="#basic-info"></a> Basic info</h4>
+<p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>
+The whole system is made up of three components in order to build local environment:</p>
 <ul>
-<li><p><strong>EOS</strong> - Main net. Basic communication </p>
+<li>
+<p><strong>EOS</strong> - Main net. Basic communication</p>
 </li>
-<li><p><strong>EOS.CDT</strong> - Developer package. API for application</p>
+<li>
+<p><strong>EOS.CDT</strong> - Developer package. API for application</p>
 </li>
-<li><p><strong>EOS.CONTRACT</strong> - super user account setup. It store information about different user and send call to system, like create an voter account.</p>
+<li>
+<p><strong>EOS.CONTRACT</strong> - super user account setup. It store information about different user and send call to system, like create an voter account.</p>
 </li>
 </ul>
 <p>Following is the basic network structure of EOSIO</p>
 <a id="more"></a>
 <ul>
-<li><p>Only one <strong>super account</strong>. It produces blocks based on gensis.json. It can also interact with system to create accounts, register producers.</p>
+<li>
+<p>Only one <strong>super account</strong>. It produces blocks based on gensis.json. It can also interact with system to create accounts, register producers.</p>
 </li>
-<li><p>Multiple(21) <strong>block generators</strong>. They will produce(confirm) block once get enough vote</p>
+<li>
+<p>Multiple(21) <strong>block generators</strong>. They will produce(confirm) block once get enough vote</p>
 </li>
-<li><strong>Voter</strong>. It could vote producer.</li>
+<li>
+<p><strong>Voter</strong>. It could vote producer.</p>
+</li>
 </ul>
 <p>gensis.json is a json file contains the information for the system to produce gensis block. Its structure is as follows:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"initial_timestamp"</span>: <span class="string">"2018-12-05T08:55:11.000"</span>, </span><br><span class="line">  "initial_key": "EOS_PUB_DEV_KEY", 'Only the super account who has the private key relate to this key can produce block'</span><br><span class="line">  "initial_configuration": &#123;</span><br><span class="line">    ... </span><br><span class="line">    "target_block_cpu_usage_pct": 500, 'It doesn't like bitcoind, you could set up everything of the genesis block by yourself.'</span><br><span class="line">    "max_transaction_cpu_usage": 50000,</span><br><span class="line">    "min_transaction_cpu_usage": 100,</span><br><span class="line">    "max_transaction_lifetime": 3600,</span><br><span class="line">    "deferred_trx_expiration_window": 600,</span><br><span class="line">    "max_transaction_delay": 3888000,</span><br><span class="line">    "max_inline_action_size": 4096,</span><br><span class="line">    "max_inline_action_depth": 4,</span><br><span class="line">    "max_authority_depth": 6</span><br><span class="line">  &#125;,</span><br><span class="line">  "initial_chain_id": "0000000000000000000000000000000000000000000000000000000000000000"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>For most things in the file is easy to understand. The server is clever, for the string in the json, the server will choose characters he thought it is correct. Confound server thought will be ignored.</p>
-<h5 id="Build-amp-install"><a href="#Build-amp-install" class="headerlink" title="Build &amp; install"></a>Build &amp; install</h5><p>In order to setup a local test environment, EOS.CDT and EOS.CONTRACT have to be compiled on the local machine. Official said EOS is not required to compile locally. But during my test and some hint from <a href="https://github.com/EOSIO/eosio.contracts" target="_blank" rel="noopener">EOS.CONTRACT</a>. It seems it is required. Original official words as follows:</p>
+<h5 id="build-install"><a class="markdownIt-Anchor" href="#build-install"></a> Build &amp; install</h5>
+<p>In order to setup a local test environment, EOS.CDT and EOS.CONTRACT have to be compiled on the local machine. Official said EOS is not required to compile locally. But during my test and some hint from <a href="https://github.com/EOSIO/eosio.contracts" target="_blank" rel="noopener">EOS.CONTRACT</a>. It seems it is required. Original official words as follows:</p>
 <blockquote>
 <ol>
-<li><p>First, ensure that your eosio is compiled to the core symbol for the EOSIO blockchain that intend to deploy to.</p>
+<li>
+<p>First, ensure that your eosio is compiled to the core symbol for the EOSIO blockchain that intend to deploy to.</p>
 </li>
-<li><p>Second, make sure that you have sudo make installed eosio.</p>
+<li>
+<p>Second, make sure that you have sudo make installed eosio.</p>
 </li>
-<li><p>Then just run the <code>build.sh</code> in the top directory to build all the contracts and the unit tests for these contracts. </p>
+<li>
+<p>Then just run the <code>build.sh</code> in the top directory to build all the contracts and the unit tests for these contracts.</p>
 </li>
 </ol>
-<p>Before compile and run those stuff, make sure the computer has at least 40GB in your home directory and 8GB of memory.  </p>
+</blockquote>
+<blockquote>
+<p>Before compile and run those stuff, make sure the computer has at least 40GB in your home directory and 8GB of memory.</p>
 </blockquote>
 <p><em>To compile EOS locally, do the following:</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/EOSIO/eos --recursive</span><br><span class="line"><span class="built_in">cd</span> eos/</span><br><span class="line">./scripts/eosio_build.sh</span><br></pre></td></tr></table></figure>
-<p>It is also required to install this one into root. The build script is at scripts directory right now. And it may take up to 3 hours to build. It could be faster if you are using a multi-core computer.  </p>
-<p>It is also recommended to install it. So that it will be easier to use in the future. Just do <code>./scripts/eosio_install.sh</code>. During my test on ubuntu 18.04. The script installed successfully. But I can not run it in the shell. </p>
+<p>It is also required to install this one into root. The build script is at scripts directory right now. And it may take up to 3 hours to build. It could be faster if you are using a multi-core computer.</p>
+<p>It is also recommended to install it. So that it will be easier to use in the future. Just do <code>./scripts/eosio_install.sh</code>. During my test on ubuntu 18.04. The script installed successfully. But I can not run it in the shell.</p>
 <p><em>Then build <a href="https://github.com/EOSIO/eosio.cdt" target="_blank" rel="noopener">eosio.cdt</a>.</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/eosio/eosio.cdt</span><br><span class="line"><span class="built_in">cd</span> eosio.cdt</span><br><span class="line">./build.sh</span><br><span class="line">sudo ./install.sh</span><br></pre></td></tr></table></figure>
 <p>There should exist at least 10GB to compile this one.</p>
@@ -352,20 +368,21 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/EOSIO/eosio.contracts.git</span><br><span class="line">cd eosio.contracts/</span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
 <p>The building process of eosio.cdt and eosio.contracts is nothing special but time consuming. It might take up to 2 hours to build. And it is impossible to build using multiple cores.</p>
 <p>Some common error and solutions could be found at <a href="../common-build-eosio/">here</a>.</p>
-<h5 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h5><p>You need to have an wallet in order to get start. You will have one by doing the following:</p>
+<h5 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h5>
+<p>You need to have an wallet in order to get start. You will have one by doing the following:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet create --to-console</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>There is no way to recover password, do remember it.</p>
 </blockquote>
-<p>When you have the password, you could play with cleos. You could use the following command to see full list of subcommand. </p>
+<p>When you have the password, you could play with cleos. You could use the following command to see full list of subcommand.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>Some useful subcommands are open, unlock, create_key, private_keys. Whenever you want to visit sensitive data, you need to provide the password. To prevent prompted by system, you could use —password to pass in your password.</p>
+<p>Some useful subcommands are open, unlock, create_key, private_keys. Whenever you want to visit sensitive data, you need to provide the password. To prevent prompted by system, you could use --password to pass in your password.</p>
 <p>Typically, you need to open wallet at first and then unlock to interact with wallet. After all interactions, it is good to lock them.</p>
 <p><em>Batch initialize</em></p>
 <p>The following are scripts might be helpful to initialize for the appropriate data folder and public key-private key pair for multiple(21) nodes.</p>
 <p>To use it, you have to pass in the password as the first attribute</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">cleos wallet open</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$1</span> ]; <span class="keyword">then</span></span><br><span class="line">DATADIR=<span class="string">"./blockchain"</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$DATADIR</span> ]; <span class="keyword">then</span></span><br><span class="line">  mkdir <span class="variable">$DATADIR</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 21 `</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">DATADIR=<span class="string">"./blockchain"</span><span class="variable">$i</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$DATADIR</span> ]; <span class="keyword">then</span></span><br><span class="line">  mkdir <span class="variable">$DATADIR</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">cleos wallet unlock  --password <span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 21)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cleos wallet create_key</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">cleos wallet private_keys  --password <span class="variable">$1</span>|grep <span class="string">"\""</span>&gt;list</span><br><span class="line"></span><br><span class="line">python3 a.py <span class="comment">#a.py will be discussed below</span></span><br><span class="line">cleos wallet lock</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>a.py is a python script which will export public-key and private key information into file in case it need to be used in the future. It is always required to have both information of public key and private key when starting a node. </p>
+<p><a href="http://a.py" target="_blank" rel="noopener">a.py</a> is a python script which will export public-key and private key information into file in case it need to be used in the future. It is always required to have both information of public key and private key when starting a node.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">file = open(<span class="string">"list"</span>, <span class="string">"r"</span>) </span><br><span class="line">file1 = open(<span class="string">"li_"</span>, <span class="string">"w"</span>)</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">li = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file: </span><br><span class="line">	li.append(line.replace(<span class="string">'\"'</span>, <span class="string">''</span>).replace(<span class="string">','</span>,<span class="string">''</span>).replace(<span class="string">' '</span>,<span class="string">''</span>))</span><br><span class="line">	count+=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(count<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">	file1.write(li[i])</span><br><span class="line">file.close()</span><br><span class="line">file1.close()</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>The key start with EOS and longer is <strong>public key</strong>, like EOS5CZwEpiweHHZpEdHYsU9Q1MEk5zTtqfrcg3TefBzTYG9xdw2gC</p>
@@ -377,50 +394,56 @@
 <blockquote>
 <p>It is good to clean every time after experiment, otherwise blocks generated will occupy too many space. It is 0.5s/blocks.</p>
 </blockquote>
-<h4 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h4><p>  <img alt="Basic procedure" src="https://f5q9jg.bn.files.1drv.com/y4mliL3MZo-_SK5igtd3BDqFS-YkT3YaOVmd-cUxFcdCJDQD0PMnvcbKsLs2SeJutQ9ho3B-tSWCjC_pRp3sAWLpUEFQ9X2_h7DL7Xp0N-NwGtkN1WAl_A7Hz83cpZA4EU4EqURUq9j3petzuFUL3vBssnsJuFLAKFsVaDZ34ymT1rcIMmphV2flpeIvGO7SZZsOCWXxtzZVPi4meg5XPGC5A?width=1280&height=720&cropmode=none" width="100%"> </p>
+<h4 id="procedure"><a class="markdownIt-Anchor" href="#procedure"></a> Procedure</h4>
+  <img alt="Basic procedure" src="https://f5q9jg.bn.files.1drv.com/y4mliL3MZo-_SK5igtd3BDqFS-YkT3YaOVmd-cUxFcdCJDQD0PMnvcbKsLs2SeJutQ9ho3B-tSWCjC_pRp3sAWLpUEFQ9X2_h7DL7Xp0N-NwGtkN1WAl_A7Hz83cpZA4EU4EqURUq9j3petzuFUL3vBssnsJuFLAKFsVaDZ34ymT1rcIMmphV2flpeIvGO7SZZsOCWXxtzZVPi4meg5XPGC5A?width=1280&height=720&cropmode=none" width="100%"> 
 <p>This is the basic procedure. The voter account and block generator account are produced by one super account. Generally speaking, the basic idea is voter will vote the producer they like, block producer are connected together. During the runtime, the procedure is:</p>
 <ul>
-<li><p>Firstly, start producer nodes.</p>
+<li>
+<p>Firstly, start producer nodes.</p>
 </li>
-<li><p>Next vote</p>
+<li>
+<p>Next vote</p>
 </li>
-<li><p>When the block producer has enough votes, block producer will go to confirm blocks.</p>
+<li>
+<p>When the block producer has enough votes, block producer will go to confirm blocks.</p>
 </li>
 </ul>
 <p>After doing appropriate settings it should start to confirm blocks. I did’t test this part yet.</p>
-<p>If you want or in some situation, you could link super account together like this, but only the one with appropriate public and private key could generate the block. More specifically, only the one has the private key of the public key in the gensis.json can produce block. Other super accounts nodes could only sync. </p>
+<p>If you want or in some situation, you could link super account together like this, but only the one with appropriate public and private key could generate the block. More specifically, only the one has the private key of the public key in the gensis.json can produce block. Other super accounts nodes could only sync.</p>
 <p>The whole structure like this:</p>
-<p><img alt="Linked structure" src="https://fzq9jg.bn.files.1drv.com/y4mPFY4a8LfbnWohwk35HzA1vDHDQ-CjNYKvRaKxmvLyM40oaDZz6BuFXy6YlJcXsKQ2De1XGM0jRVjCprRnvAs9pD87cLG359wt-xDj-0FpR0TLY_zYwcO1IWDGJKiKQrwiWouefpY1KG5wjiHAUvCNmT1a13oBQedYAB82QLgwRfBw9TB35FMMrx0MCIgJPB2EZVFiBjwt4LeKLQH-g1Viw?width=1280&height=291&cropmode=none" width="100%"></p>
+<img alt="Linked structure" src="https://fzq9jg.bn.files.1drv.com/y4mPFY4a8LfbnWohwk35HzA1vDHDQ-CjNYKvRaKxmvLyM40oaDZz6BuFXy6YlJcXsKQ2De1XGM0jRVjCprRnvAs9pD87cLG359wt-xDj-0FpR0TLY_zYwcO1IWDGJKiKQrwiWouefpY1KG5wjiHAUvCNmT1a13oBQedYAB82QLgwRfBw9TB35FMMrx0MCIgJPB2EZVFiBjwt4LeKLQH-g1Viw?width=1280&height=291&cropmode=none" width="100%">
 <p>You could use the following command to start multiple super account nodes from gensis status and form the structure shown above:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">password = <span class="string">""</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	password = sys.argv[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">except</span> IndexError:</span><br><span class="line">	print(<span class="string">"Please include password"</span>)</span><br><span class="line">	sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Generate gensis.json</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">file1 = open(<span class="string">"li_"</span>, <span class="string">"r"</span>)</span><br><span class="line">temp = file1.readline()</span><br><span class="line">initial_key = file1.readline()</span><br><span class="line">os.system(<span class="string">'rm -f genesis.json'</span>)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"genesis.json"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> outfile:</span><br><span class="line">    json.dump(&#123;<span class="string">'initial_timestamp'</span>:<span class="string">"2018-12-05T08:55:11.000"</span>, <span class="string">'initial_key'</span>: initial_key[:<span class="number">-1</span>], <span class="string">'initial_configuration'</span>:&#123;<span class="string">"max_block_net_usage"</span>: <span class="number">1048576</span>, <span class="string">"target_block_net_usage_pct"</span>: <span class="number">1000</span>, <span class="string">"max_transaction_net_usage"</span>: <span class="number">524288</span>, <span class="string">"base_per_transaction_net_usage"</span>: <span class="number">12</span>, <span class="string">"net_usage_leeway"</span>: <span class="number">500</span>, <span class="string">"context_free_discount_net_usage_num"</span>: <span class="number">20</span>, <span class="string">"context_free_discount_net_usage_den"</span>: <span class="number">100</span>, <span class="string">"max_block_cpu_usage"</span>: <span class="number">100000</span>, <span class="string">"target_block_cpu_usage_pct"</span>: <span class="number">500</span>, <span class="string">"max_transaction_cpu_usage"</span>: <span class="number">50000</span>, <span class="string">"min_transaction_cpu_usage"</span>: <span class="number">100</span>, <span class="string">"max_transaction_lifetime"</span>: <span class="number">3600</span>, <span class="string">"deferred_trx_expiration_window"</span>: <span class="number">600</span>, <span class="string">"max_transaction_delay"</span>: <span class="number">3888000</span>, <span class="string">"max_inline_action_size"</span>: <span class="number">4096</span>, <span class="string">"max_inline_action_depth"</span>: <span class="number">4</span>, <span class="string">"max_authority_depth"</span>: <span class="number">6</span> &#125;,  <span class="string">"initial_chain_id"</span>: <span class="string">"0000000000000000000000000000000000000000000000000000000000000000"</span>&#125;, outfile, indent=<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Start gensis</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">ini_port=<span class="number">9000</span></span><br><span class="line">currentport=ini_port</span><br><span class="line">sentstring=<span class="string">'./genesis_start.sh '</span>+<span class="string">'./blockchain'</span>+<span class="string">' '</span>+initial_key[:<span class="number">-1</span>]+<span class="string">' '</span>+temp[:<span class="number">-1</span>]+<span class="string">' '</span>+str(currentport)+<span class="string">' '</span>+str(currentport+<span class="number">100</span>)+<span class="string">' '</span>+str(currentport+<span class="number">101</span>)</span><br><span class="line">os.system(<span class="string">'echo Start gensis'</span>)</span><br><span class="line">os.system(sentstring)</span><br><span class="line">currentport+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">30</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">start nodes</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">22</span>):</span><br><span class="line">	private_key = file1.readline()</span><br><span class="line">	public_key = file1.readline()</span><br><span class="line">	tosend = <span class="string">'./genesis_start.sh '</span>+<span class="string">'./blockchain'</span>+str(i)+<span class="string">' '</span>+public_key[:<span class="number">-1</span>]+<span class="string">' '</span>+private_key[:<span class="number">-1</span>]+<span class="string">' '</span>+str(currentport)+<span class="string">' '</span>+str(currentport+<span class="number">100</span>)+<span class="string">' '</span>+str(currentport+<span class="number">99</span>)</span><br><span class="line">	os.system(<span class="string">'echo start node '</span>+ str(i))</span><br><span class="line">	os.system(tosend)</span><br><span class="line">	currentport+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>For this python code, it first generates the gensis.json. And then it starts nodes in some order(First gensis node, then other super accounts). All public key and private key used is based on the file generated previously. To use it, you have to put the password of the wallet as the first attribute pass in when you run the program. The script did so, in case it needs to deal with sensitive information.</p>
 <p>The follow script is in a file called genesis_start.sh, which is called by the previous python program to start each node:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#$1--datadir $2--Public_key $3--Private_key $4--httpserver $5--p2plisten $6--peer_address</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$1</span> ] &amp;&amp; [ <span class="variable">$2</span> ] &amp;&amp; [ <span class="variable">$3</span> ] &amp;&amp; [ <span class="variable">$4</span> ] &amp;&amp; [ <span class="variable">$5</span> ] &amp;&amp; [ <span class="variable">$6</span> ]; <span class="keyword">then</span></span><br><span class="line">DATADIR=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line">nodeos \</span><br><span class="line">--genesis-json <span class="variable">$DATADIR</span><span class="string">"/../genesis.json"</span> \</span><br><span class="line">--signature-provider <span class="variable">$2</span>=KEY:<span class="variable">$3</span> \</span><br><span class="line">--plugin eosio::producer_plugin \</span><br><span class="line">--plugin eosio::chain_api_plugin \</span><br><span class="line">--plugin eosio::http_plugin \</span><br><span class="line">--plugin eosio::history_api_plugin \</span><br><span class="line">--data-dir <span class="variable">$DATADIR</span><span class="string">"/data"</span> \</span><br><span class="line">--blocks-dir <span class="variable">$DATADIR</span><span class="string">"/blocks"</span> \</span><br><span class="line">--config-dir <span class="variable">$DATADIR</span><span class="string">"/config"</span> \</span><br><span class="line">--producer-name eosio \</span><br><span class="line">--http-server-address 127.0.0.1:<span class="variable">$4</span> \</span><br><span class="line">--p2p-listen-endpoint 127.0.0.1:<span class="variable">$5</span> \</span><br><span class="line">--access-control-allow-origin=* \</span><br><span class="line">--contracts-console \</span><br><span class="line">--http-validate-host=<span class="literal">false</span> \</span><br><span class="line">--verbose-http-errors \</span><br><span class="line">--<span class="built_in">enable</span>-stale-production \</span><br><span class="line">--p2p-peer-address localhost:<span class="variable">$6</span> \</span><br><span class="line">&gt;&gt; <span class="variable">$DATADIR</span><span class="string">"/nodeos.log"</span> 2&gt;&amp;1 &amp; \</span><br><span class="line"><span class="built_in">echo</span> $! &gt; <span class="variable">$DATADIR</span><span class="string">"/eosd.pid"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>This script will start a new node by using information given by user and save the running result to file at the datadir given.. To use it manually, just use <code>./genesis_start.sh [datadir] [Public_key] [Private_key] [httpserver] [p2plisten] [peer_address]</code></p>
+<p>This script will start a new node by using information given by user and save the running result to file at the datadir given… To use it manually, just use <code>./genesis_start.sh [datadir] [Public_key] [Private_key] [httpserver] [p2plisten] [peer_address]</code></p>
 <blockquote>
 <p>If you get an information of “This is not an executable file”. Just do <code>chmod 777 genesis_start.sh</code></p>
 </blockquote>
 <p>I think those scripts are still useful for the following reason:</p>
 <ul>
-<li>The producer has option about the super account node it reports. It could make the main node not too stressful when lots of submission happens(I guess). </li>
+<li>The producer has option about the super account node it reports. It could make the main node not too stressful when lots of submission happens(I guess).</li>
 <li>By modifying them a little bit, they could also be used to generate multiple block producer and voters.</li>
 </ul>
-<p>And I find out only the linked structure will be accepted. It means multiple connections to one super account node is not permitted. More detailed, as the graph show below:<br>      <img alt="Multi conn not allowed" src="https://fzq8jg.bn.files.1drv.com/y4m9X87KWyMymAB7T60SBAoK0DvuSQsPDRoSqIYl1A-6crJca50nXk36T0G2crGK2PISAJLGzaM5Z-XAVcpQTMwARR8VuQpZlZwz5w7WTmuVQWaD8hEHEt2bmFVH0HJpP_gl5fWdfIaXHw-ZIE8RHQU2slcf3fPLgmnQGZMLvIX8TDnPBUVWLe-JCKBzQtCSqRasTyWT2AmMOPsiUweCl-C9A?width=1280&height=519&cropmode=none" width="100%"></p>
+<p>And I find out only the linked structure will be accepted. It means multiple connections to one super account node is not permitted. More detailed, as the graph show below:<br>
+<img alt="Multi conn not allowed" src="https://fzq8jg.bn.files.1drv.com/y4m9X87KWyMymAB7T60SBAoK0DvuSQsPDRoSqIYl1A-6crJca50nXk36T0G2crGK2PISAJLGzaM5Z-XAVcpQTMwARR8VuQpZlZwz5w7WTmuVQWaD8hEHEt2bmFVH0HJpP_gl5fWdfIaXHw-ZIE8RHQU2slcf3fPLgmnQGZMLvIX8TDnPBUVWLe-JCKBzQtCSqRasTyWT2AmMOPsiUweCl-C9A?width=1280&height=519&cropmode=none" width="100%"></p>
 <blockquote>
 <p>To make the system recognize an account is block producer, it is required to use regproducer like the following. Otherwise it is just a voter.</p>
 </blockquote>
-<h4 id="Build-local-test-network"><a href="#Build-local-test-network" class="headerlink" title="Build local test network"></a>Build local test network</h4><blockquote>
-<p>Need to use the EOS (cleos and nodes) compiled from the previous steps. Maybe this is not required. But it seems that eosio.contract is related on eosio main program. The network can not be built when using the software from ubuntu package management on my machine. </p>
+<h4 id="build-local-test-network"><a class="markdownIt-Anchor" href="#build-local-test-network"></a> Build local test network</h4>
+<blockquote>
+<p>Need to use the EOS (cleos and nodes) compiled from the previous steps. Maybe this is not required. But it seems that eosio.contract is related on eosio main program. The network can not be built when using the software from ubuntu package management on my machine.</p>
 </blockquote>
 <p>Basically, I follow up the guidance from <a href="https://medium.com/coinmonks/guide-to-eos-voting-simulation-4eb7a85bab44" target="_blank" rel="noopener">Guide to EOS voting simulation</a> and the official guidance <a href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence" target="_blank" rel="noopener">BIOS Boot Sequence</a>. Some places has been changed to fit the latest version of EOSIO.</p>
-<p>Before start, you need to initialize wallet by taking the previous steps. And then create some new public and private key pairs. Just do <code>cleos wallet create_key</code>. If you want to see all key pairs, do <code>cleos wallet private_keys</code>. </p>
-<p>Then, create genesis.json and the script used to start producing genesis block. </p>
+<p>Before start, you need to initialize wallet by taking the previous steps. And then create some new public and private key pairs. Just do <code>cleos wallet create_key</code>. If you want to see all key pairs, do <code>cleos wallet private_keys</code>.</p>
+<p>Then, create genesis.json and the script used to start producing genesis block.</p>
 <ul>
-<li>Create genesis.json at a property directory. </li>
+<li>Create genesis.json at a property directory.</li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"initial_timestamp"</span>: <span class="string">"2018-12-05T08:55:11.000"</span>,</span><br><span class="line">  <span class="attr">"initial_key"</span>: <span class="string">"EOS_PUB_DEV_KEY"</span>,</span><br><span class="line">  <span class="attr">"initial_configuration"</span>: &#123;</span><br><span class="line">    <span class="attr">"max_block_net_usage"</span>: <span class="number">1048576</span>,</span><br><span class="line">    <span class="attr">"target_block_net_usage_pct"</span>: <span class="number">1000</span>,</span><br><span class="line">    <span class="attr">"max_transaction_net_usage"</span>: <span class="number">524288</span>,</span><br><span class="line">    <span class="attr">"base_per_transaction_net_usage"</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="attr">"net_usage_leeway"</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">"context_free_discount_net_usage_num"</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">"context_free_discount_net_usage_den"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">"max_block_cpu_usage"</span>: <span class="number">100000</span>,</span><br><span class="line">    <span class="attr">"target_block_cpu_usage_pct"</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">"max_transaction_cpu_usage"</span>: <span class="number">50000</span>,</span><br><span class="line">    <span class="attr">"min_transaction_cpu_usage"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">"max_transaction_lifetime"</span>: <span class="number">3600</span>,</span><br><span class="line">    <span class="attr">"deferred_trx_expiration_window"</span>: <span class="number">600</span>,</span><br><span class="line">    <span class="attr">"max_transaction_delay"</span>: <span class="number">3888000</span>,</span><br><span class="line">    <span class="attr">"max_inline_action_size"</span>: <span class="number">4096</span>,</span><br><span class="line">    <span class="attr">"max_inline_action_depth"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">"max_authority_depth"</span>: <span class="number">6</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"initial_chain_id"</span>: <span class="string">"0000000000000000000000000000000000000000000000000000000000000000"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Then, create the script used to start the first node and save it as genesis_start.sh. </li>
+<li>Then, create the script used to start the first node and save it as genesis_start.sh.</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">DATADIR=<span class="string">"./blockchain"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$DATADIR</span> ]; <span class="keyword">then</span></span><br><span class="line">  mkdir -p <span class="variable">$DATADIR</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">nodeos \</span><br><span class="line">--genesis-json <span class="variable">$DATADIR</span><span class="string">"/../genesis.json"</span> \</span><br><span class="line">--signature-provider EOS_PUB_DEV_KEY=KEY:EOS_PRIV_DEV_KEY \</span><br><span class="line">--plugin eosio::producer_plugin \</span><br><span class="line">--plugin eosio::chain_api_plugin \</span><br><span class="line">--plugin eosio::http_plugin \</span><br><span class="line">--plugin eosio::history_api_plugin \</span><br><span class="line">--plugin eosio::history_plugin \</span><br><span class="line">--data-dir <span class="variable">$DATADIR</span><span class="string">"/data"</span> \</span><br><span class="line">--blocks-dir <span class="variable">$DATADIR</span><span class="string">"/blocks"</span> \</span><br><span class="line">--config-dir <span class="variable">$DATADIR</span><span class="string">"/config"</span> \</span><br><span class="line">--producer-name eosio \</span><br><span class="line">--http-server-address 127.0.0.1:8888 \</span><br><span class="line">--p2p-listen-endpoint 127.0.0.1:9010 \</span><br><span class="line">--access-control-allow-origin=* \</span><br><span class="line">--contracts-console \</span><br><span class="line">--http-validate-host=<span class="literal">false</span> \</span><br><span class="line">--verbose-http-errors \</span><br><span class="line">--<span class="built_in">enable</span>-stale-production \</span><br><span class="line">--p2p-peer-address localhost:9011 \</span><br><span class="line">--p2p-peer-address localhost:9012 \</span><br><span class="line">--p2p-peer-address localhost:9013 \</span><br><span class="line">&gt;&gt; <span class="variable">$DATADIR</span><span class="string">"/nodeos.log"</span> 2&gt;&amp;1 &amp; \</span><br><span class="line"><span class="built_in">echo</span> $! &gt; <span class="variable">$DATADIR</span><span class="string">"/eosd.pid"</span></span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -431,59 +454,58 @@
 </ol>
 <p>This tutorial is based on v4.2.0, with one node for bios and two nodes as block producers. First start the bios node:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gensis_start.sh</span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li><strong>Deploy</strong> <code>eosio.bios</code> <strong>contract to</strong> <code>eosio</code> <strong>account.</strong></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos <span class="built_in">set</span> contract eosio build/contracts/eosio.bios</span><br></pre></td></tr></table></figure>
-<p><div id="3"></div></p>
-<ol>
-<li><strong>Create necessary accounts.</strong></li>
-</ol>
+<div id="3"></div>
+3. **Create necessary accounts.**
 <p>The list of accounts required is provided by official:</p>
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; eosio.bpay</span><br><span class="line">&gt; eosio.msig</span><br><span class="line">&gt; eosio.names</span><br><span class="line">&gt; eosio.ram</span><br><span class="line">&gt; eosio.ramfee</span><br><span class="line">&gt; eosio.saving</span><br><span class="line">&gt; eosio.stake</span><br><span class="line">&gt; eosio.token</span><br><span class="line">&gt; eosio.vpay</span><br><span class="line">&gt; eosio.rex</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>Use <code>create account</code> command to create each of them:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos create account eosio eosio.*** EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo</span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="4">
 <li><strong>Set the</strong> <code>eosio.token</code> <strong>contract</strong></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos <span class="built_in">set</span> contract eosio.token eos/build/contracts/eosio.token</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>The eosio.token used should be at the build directory which contains file eosio.token.wasm, otherwise wrong message will be invoked.</p>
 </blockquote>
-<ol>
+<ol start="5">
 <li><strong>set the</strong> <code>eosio.msig</code> <strong>contract</strong></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleos create account eosio eosio.msig EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo</span><br><span class="line">cleos <span class="built_in">set</span> contract eosio.msig eos/build/contracts/eosio.msig</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>The eosio.msig used should be at the build directory which contains file eosio.msig.wasm, otherwise wrong message will be invoked.</p>
 </blockquote>
-<ol>
+<ol start="6">
 <li><strong>Create and allocate token</strong></li>
 </ol>
 <p>We create and issue 1,000,000,000.0000 tokens and name it ‘SYS’. Then issue to <code>eosio</code> account.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio.token create <span class="string">'&#123;"issuer":"eosio", "maximum_supply": "1000000000.0000 SYS", "can_freeze": 0, "can_recall": 0, "can_whitelist": 0&#125;'</span> -p eosio.token</span><br><span class="line">cleos push action eosio.token issue <span class="string">'&#123;"to":"eosio","quantity":"1000000000.0000 SYS","memo":"issue"&#125;'</span> -p eosio</span><br></pre></td></tr></table></figure>
 <p>To check the balance and stats</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleos get currency balance eosio.token eosio</span><br><span class="line">cleos get currency stats eosio.token <span class="string">'SYS'</span></span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="7">
 <li><strong>Set</strong> <code>eosio.system</code> <strong>contract to</strong> <code>eosio</code></li>
 </ol>
 <p>After setting <code>eosio.system</code> contract we will be able to stake our accounts.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos <span class="built_in">set</span> contract eosio eos/build/contracts/eosio.system</span><br></pre></td></tr></table></figure>
 <p>Then stake tokens and expand the network. <code>cleos</code> stakes 8 KB of RAM on account creation, paid by the account creator.</p>
-<ol>
-<li><strong>Make</strong> <code>eosio.msig</code> <strong>a privileged account and Initialize system account</strong> </li>
+<ol start="8">
+<li><strong>Make</strong> <code>eosio.msig</code> <strong>a privileged account and Initialize system account</strong></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio setpriv <span class="string">'["eosio.msig", 1]'</span> -p eosio@active</span><br><span class="line"></span><br><span class="line">cleos push action eosio init <span class="string">'["0", "4,SYS"]'</span> -p eosio@active</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>The command initializes the <code>system</code> account with code zero (needed at initialization time)  and <code>SYS</code> token with precision 4; precision can range from [0 .. 18]. </p>
+<p>The command initializes the <code>system</code> account with code zero (needed at initialization time)<br>
+and <code>SYS</code> token with precision 4; precision can range from [0 … 18].</p>
 </blockquote>
-<ol>
+<ol start="9">
 <li><strong>Create accounts for BPs:</strong> <code>bp1111111111</code> <strong>and</strong> <code>bp2222222222</code></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos system newaccount eosio bp1111111111 EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo --buy-ram-EOS <span class="string">'1000000.0000 SYS'</span> --stake-net <span class="string">'1000000.0000 SYS'</span> --stake-cpu <span class="string">'1000000.0000 SYS'</span></span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="10">
 <li><strong>Register BPs</strong></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos system regproducer bp1111111111 EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo</span><br></pre></td></tr></table></figure>
@@ -491,25 +513,25 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos system listproducers</span><br></pre></td></tr></table></figure>
 <p>To start the two producer nodes:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeos -e --genesis-json path/to/genesis.json --producer-name bp1111111111 --private-key <span class="string">'[ "EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo","5K7EY...Hi8Uy61wU1o" ]'</span> --http-server-address 127.0.0.1:8889 --p2plisten-endpoint 127.0.0.1:9877 --p2p-peer-address bios_node_ip:port --plugin eosio::producer_plugin --plugin eosio::chain_api_plugin --plugin eosio::net_api_plugin</span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="11">
 <li><strong>Create voters accounts:</strong> <code>voter1111111</code><strong>,</strong> <code>voter2222222</code><strong>,</strong> <code>voter3333333</code></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos system newaccount eosio voter1111111 EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo EOS6sAgFvNDfiZ62UMosK7WULNVCuAotpR2raKzaBpopLevvYYWBo --buy-ram-EOS <span class="string">'50.0000 SYS'</span> --stake-net <span class="string">'50.0000 SYS'</span> --stake-cpu <span class="string">'50.0000 SYS'</span></span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="12">
 <li><strong>Issue tokens to voters</strong></li>
 </ol>
 <p>Transfer 100,000,000 SYS to each voter.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos push action eosio.token transfer <span class="string">'["eosio", "voter1111111","100000000.0000 SYS","vote"]'</span> -p eosio</span><br></pre></td></tr></table></figure>
 <p>Check the balance</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos get currency balance eosio.token voter1111111</span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="13">
 <li><strong>Delegate bandwidth</strong></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cleos system delegatebw voter1111111 voter1111111 <span class="string">"50000000.0000 SYS"</span> <span class="string">"50000000.0000 SYS"</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Sometime, the program will tell you failed. But the command successes actually. You could redo <code>cleos get currency balance eosio.token voter1111111</code> to check if this command take effect or not.</p>
 </blockquote>
-<ol>
+<ol start="14">
 <li><strong>Vote</strong></li>
 </ol>
 <p>Voting for producers can begin as accounts are staked and producers are registered.</p>
@@ -519,12 +541,13 @@
 <li><strong>Check votes:</strong></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleos system listproducers </span><br><span class="line">cleos get table eosio eosio voters</span><br></pre></td></tr></table></figure>
-<p>Some error and solutions I found is at <a href="../common-run-eosio/">here</a>. </p>
-<h4 id="Special-notice"><a href="#Special-notice" class="headerlink" title="Special notice"></a>Special notice</h4><ul>
-<li>EOS.CONTRACT is based on locally compiled EOS. </li>
+<p>Some error and solutions I found is at <a href="../common-run-eosio/">here</a>.</p>
+<h4 id="special-notice"><a class="markdownIt-Anchor" href="#special-notice"></a> Special notice</h4>
+<ul>
+<li>EOS.CONTRACT is based on locally compiled EOS.</li>
 <li>To compile EOS locally, it has to use git clone to clone it from github. You can not download from source and compile.</li>
 <li>The compilation requires lots of space. It is good to remain 40GB of disk and 8GB of memory. It also takes around 3 hours to compile.</li>
-<li>They can only be compiled at the current user’s home directory. </li>
+<li>They can only be compiled at the current user’s home directory.</li>
 </ul>
 
         </div>
@@ -671,7 +694,7 @@
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some-experience-on-building-EOSIO-local-network"><span class="toc-text">Some experience on building EOSIO local network</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basic-info"><span class="toc-text">Basic info</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Build-amp-install"><span class="toc-text">Build &amp; install</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Initialize"><span class="toc-text">Initialize</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Procedure"><span class="toc-text">Procedure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Build-local-test-network"><span class="toc-text">Build local test network</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Special-notice"><span class="toc-text">Special notice</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#some-experience-on-building-eosio-local-network"><span class="toc-text"> Some experience on building EOSIO local network</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#basic-info"><span class="toc-text"> Basic info</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#build-install"><span class="toc-text"> Build &amp; install</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#initialize"><span class="toc-text"> Initialize</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#procedure"><span class="toc-text"> Procedure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#build-local-test-network"><span class="toc-text"> Build local test network</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#special-notice"><span class="toc-text"> Special notice</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -709,6 +732,8 @@
           <li><a class="flat-box child" title="/categories/Programs/tools/" href="/categories/Programs/tools/"><div class="name">tools</div><div class="badge">(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/optimization/" href="/categories/optimization/"><div class="name">optimization</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(4)</div></a></li>
         
@@ -761,7 +786,7 @@
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-run-eosio/" title="Common error while running EOSIO" rel="bookmark">Common error while running EOSIO</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-build-eosio/" title="Common error while building EOSIO" rel="bookmark">Common error while building EOSIO</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-build-eosio/" title="Common error while building EOSIO" rel="bookmark">Common error while building EOSIO</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2019/common-run-eosio/" title="Common error while running EOSIO" rel="bookmark">Common error while running EOSIO</a></h3></div></li></ul>
     </div>
   </section>
 
