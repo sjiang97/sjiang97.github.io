@@ -308,35 +308,26 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="a-simple-method-to-write-words"><a class="markdownIt-Anchor" href="#a-simple-method-to-write-words"></a> A simple method to write words</h3>
-<p>I like to use voice input to write words. But I didn’t find an easy to use voice dedication program with dynamic correction. So I made this one. A java voice input interface using iflytek voice dictation with dynamic correction.</p>
+          <h3 id="A-simple-method-to-write-words"><a href="#A-simple-method-to-write-words" class="headerlink" title="A simple method to write words"></a>A simple method to write words</h3><p>I like to use voice input to write words. But I didn’t find an easy to use voice dedication program with dynamic correction. So I made this one. A java voice input interface using iflytek voice dictation with dynamic correction.</p>
 <a id="more"></a>
 <p><strong>Github Page:</strong> <a href="https://github.com/ShaokangJiang/VoiceInput" target="_blank" rel="noopener">https://github.com/ShaokangJiang/VoiceInput</a></p>
 <p><strong>Compiled version:</strong> <a href="https://github.com/ShaokangJiang/VoiceInput/releases" target="_blank" rel="noopener">https://github.com/ShaokangJiang/VoiceInput/releases</a></p>
 <p><strong>Code version:</strong> <a href="https://github.com/ShaokangJiang/VoiceInput/archive/0.1.zip" target="_blank" rel="noopener">https://github.com/ShaokangJiang/VoiceInput/archive/0.1.zip</a></p>
-<h4 id="sample-run"><a class="markdownIt-Anchor" href="#sample-run"></a> Sample run:</h4>
-<p>You need to choose a language to dedicate in bash window at first. Then a window below will be pushed out:</p>
-<p>Each button clarify what you could do clearly.</p>
+<h4 id="Sample-run"><a href="#Sample-run" class="headerlink" title="Sample run:"></a>Sample run:</h4><p>You need to choose a language to dedicate in bash window at first. Then a window below will be pushed out: </p>
+<p>Each button clarify what you could do clearly. </p>
 <img src="/2019/projects/VoiceInput/3.png" title="test">
-<h4 id="usage"><a class="markdownIt-Anchor" href="#usage"></a> Usage</h4>
-<h5 id="creating-configuration-file-and-put-it-to-the-running-directory"><a class="markdownIt-Anchor" href="#creating-configuration-file-and-put-it-to-the-running-directory"></a> Creating configuration file and put it to the running directory</h5>
-<p>A model of configuration file as shown below:</p>
+<h4 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h4><h5 id="Creating-configuration-file-and-put-it-to-the-running-directory"><a href="#Creating-configuration-file-and-put-it-to-the-running-directory" class="headerlink" title="Creating configuration file and put it to the running directory"></a>Creating configuration file and put it to the running directory</h5><p>A model of configuration file as shown below:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-----special:-----</span><br><span class="line">BAIDU_APP_ID: </span><br><span class="line">BAIDU_SECURITY_KEY: </span><br><span class="line">IFLY_APP_ID:</span><br></pre></td></tr></table></figure>
-<p><code>-----special:-----</code> is field tag, It should matches exactly as what described above.</p>
-<h6 id="special-field"><a class="markdownIt-Anchor" href="#special-field"></a> Special field:</h6>
-<ul>
+<p><code>-----special:-----</code> is field tag, It should matches exactly as what described above. </p>
+<h6 id="Special-field"><a href="#Special-field" class="headerlink" title="Special field:"></a>Special field:</h6><ul>
 <li>BAIDU_APP_ID/BAIDU_SECURITY_KEY: Need register Baidu translation API at <a href="http://api.fanyi.baidu.com/api/trans/product/index" target="_blank" rel="noopener">here</a>. No need to register if you don’t plan to use translation function.</li>
-<li>IFLY_APP_ID: Need register with Ifly at <a href="https://www.xfyun.cn/" target="_blank" rel="noopener">here</a>. No need to register if you don’t plan to use voice dedication function</li>
+<li>IFLY_APP_ID: Need register with Ifly at <a href="https://www.xfyun.cn/" target="_blank" rel="noopener">here</a>. No need to register if you don’t plan to use voice dedication function </li>
 </ul>
-<h4 id="compile-run"><a class="markdownIt-Anchor" href="#compile-run"></a> Compile &amp; run</h4>
-<h5 id="download-from-release-page-or-compile-from-source"><a class="markdownIt-Anchor" href="#download-from-release-page-or-compile-from-source"></a> Download from release page or compile from source.</h5>
-<h6 id="download-from-release-page"><a class="markdownIt-Anchor" href="#download-from-release-page"></a> Download from release page:</h6>
-<ol>
+<h4 id="Compile-amp-run"><a href="#Compile-amp-run" class="headerlink" title="Compile &amp; run"></a>Compile &amp; run</h4><h5 id="Download-from-release-page-or-compile-from-source"><a href="#Download-from-release-page-or-compile-from-source" class="headerlink" title="Download from release page or compile from source."></a>Download from release page or compile from source.</h5><h6 id="Download-from-release-page"><a href="#Download-from-release-page" class="headerlink" title="Download from release page:"></a>Download from release page:</h6><ol>
 <li>Choose correct library to download and download VoiceInput from release page</li>
 <li><code>java -jar VoiceInput.jar</code></li>
 </ol>
-<h6 id="download-and-compile-from-source-page"><a class="markdownIt-Anchor" href="#download-and-compile-from-source-page"></a> Download and compile from source page:</h6>
-<ol>
+<h6 id="Download-and-compile-from-source-page"><a href="#Download-and-compile-from-source-page" class="headerlink" title="Download and compile from source page:"></a>Download and compile from source page:</h6><ol>
 <li><code>git clone https://github.com/sjiang97/VoiceInput.git</code></li>
 <li><code>cd VoiceInput</code></li>
 <li><code>find -name &quot;*.java&quot; &gt; sources.txt</code> : Find all java files to compile</li>
@@ -345,8 +336,7 @@
 <li><code>cd bin</code></li>
 <li><code>java -classpath ./:../json-jena-1.0.jar:../Msc.jar Test</code></li>
 </ol>
-<h4 id="special-notes"><a class="markdownIt-Anchor" href="#special-notes"></a> Special notes:</h4>
-<p><strong>It requires oracle java 1.8(openjdk on linux) or above</strong></p>
+<h4 id="Special-notes"><a href="#Special-notes" class="headerlink" title="Special notes:"></a>Special notes:</h4><p><strong>It requires oracle java 1.8(openjdk on linux) or above</strong></p>
 
         </div>
         
@@ -492,7 +482,7 @@
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-simple-method-to-write-words"><span class="toc-text"> A simple method to write words</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sample-run"><span class="toc-text"> Sample run:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usage"><span class="toc-text"> Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#creating-configuration-file-and-put-it-to-the-running-directory"><span class="toc-text"> Creating configuration file and put it to the running directory</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#special-field"><span class="toc-text"> Special field:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compile-run"><span class="toc-text"> Compile &amp; run</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#download-from-release-page-or-compile-from-source"><span class="toc-text"> Download from release page or compile from source.</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#download-from-release-page"><span class="toc-text"> Download from release page:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#download-and-compile-from-source-page"><span class="toc-text"> Download and compile from source page:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#special-notes"><span class="toc-text"> Special notes:</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-simple-method-to-write-words"><span class="toc-text">A simple method to write words</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sample-run"><span class="toc-text">Sample run:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Creating-configuration-file-and-put-it-to-the-running-directory"><span class="toc-text">Creating configuration file and put it to the running directory</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Special-field"><span class="toc-text">Special field:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Compile-amp-run"><span class="toc-text">Compile &amp; run</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Download-from-release-page-or-compile-from-source"><span class="toc-text">Download from release page or compile from source.</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Download-from-release-page"><span class="toc-text">Download from release page:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Download-and-compile-from-source-page"><span class="toc-text">Download and compile from source page:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Special-notes"><span class="toc-text">Special notes:</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -531,7 +521,7 @@
         
           <li><a class="flat-box" title="/categories/optimization/" href="/categories/optimization/"><div class="name">optimization</div><div class="badge">(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(3)</div></a></li>
         
           <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(4)</div></a></li>
         

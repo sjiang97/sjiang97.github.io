@@ -308,42 +308,30 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="common-error-and-solution-during-running-and-building-connections-between-eosio-components"><a class="markdownIt-Anchor" href="#common-error-and-solution-during-running-and-building-connections-between-eosio-components"></a> Common error and solution during running and building connections between EOSIO components:</h3>
-<blockquote>
-<p>Error 3050000: Action validate exception<br>
-Error Details:<br>
-inline action’s authorizing actor eosio.ram does not exist</p>
+          <h3 id="Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components"><a href="#Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components" class="headerlink" title="Common error and solution during running and building connections between EOSIO components:"></a>Common error and solution during running and building connections between EOSIO components:</h3><blockquote>
+<p>Error 3050000: Action validate exception<br>Error Details:<br>inline action’s authorizing actor eosio.ram does not exist</p>
 </blockquote>
-<p>Solution: Make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts. Otherwise this error will show up when creating block producer or voter. <a id="more"></a> For more details, see <a href="../EOSIO_local_network/#3">here</a> or <a href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence#section--1-7-create-important-system-accounts-" target="_blank" rel="noopener">here</a>.</p>
+<p>Solution: Make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts. Otherwise this error will show up when creating block producer or voter. <a id="more"></a> For more details, see <a href="../EOSIO_local_network/#3">here</a> or <a href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence#section--1-7-create-important-system-accounts-" target="_blank" rel="noopener">here</a>. </p>
 <blockquote>
-<p>Error 3080001: Account using more than allotted RAM usage<br>
-Error Details:<br>
-account eosio.ram has insufficient ram; needs 2996 bytes has 0 bytes</p>
+<p>Error 3080001: Account using more than allotted RAM usage<br>Error Details:<br>account eosio.ram has insufficient ram; needs 2996 bytes has 0 bytes</p>
 </blockquote>
-<p>Solution: Basically, this error happens when some account has insufficient ram. It depends on the account type you are creating.</p>
+<p>Solution: Basically, this error happens when some account has insufficient ram. It depends on the account type you are creating. </p>
 <ul>
-<li>If the account is eosio.***, then it is a system account. If this happens, then make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts.</li>
+<li>If the account is eosio.<em>*</em>, then it is a system account. If this happens, then make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts.</li>
 <li>If the account is an arbitrary name, then it is a user account(producer/worker). If this is the case, the common error is using wrong command to create new account. For account other than system account, it seems it is required to use  <code>cleos system newaccount [OPTIONS] creator name OwnerKey [ActiveKey]</code>.</li>
 </ul>
 <blockquote>
-<p>Error 3120003: Locked wallet<br>
-Ensure that your wallet is unlocked before using it!<br>
-Error Details:<br>
-You don’t have any unlocked wallet!</p>
+<p>Error 3120003: Locked wallet<br>Ensure that your wallet is unlocked before using it!<br>Error Details:<br>You don’t have any unlocked wallet!</p>
 </blockquote>
-<p>Solution: The wallet need to be unlocked before experiment.</p>
+<p>Solution: The wallet need to be unlocked before experiment. </p>
 <blockquote>
-<p>Error 3050001: Account name already exists<br>
-Error Details:<br>
-Cannot create account named bp1111111111, as that name is already taken</p>
+<p>Error 3050001: Account name already exists<br>Error Details:<br>Cannot create account named bp1111111111, as that name is already taken</p>
 </blockquote>
 <p>Solution: Use another name.</p>
 <blockquote>
-<p>Error 3050003: eosio_assert_message assertion failure<br>
-Error Details:<br>
-assertion failure with message: cannot use transfer flag if delegating to self</p>
+<p>Error 3050003: eosio_assert_message assertion failure<br>Error Details:<br>assertion failure with message: cannot use transfer flag if delegating to self</p>
 </blockquote>
-<p>Solution: It seems --transfer tag for self transfer is for some old version of EOSIO. Remove it if error happens. Though the error happens, the command still get executed sometime.</p>
+<p>Solution: It seems —transfer tag for self transfer is for some old version of EOSIO. Remove it if error happens. Though the error happens, the command still get executed sometime. </p>
 <blockquote>
 <p>assertion failure with message: system contract must first be initialized</p>
 </blockquote>
@@ -498,7 +486,7 @@ assertion failure with message: cannot use transfer flag if delegating to self</
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#common-error-and-solution-during-running-and-building-connections-between-eosio-components"><span class="toc-text"> Common error and solution during running and building connections between EOSIO components:</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components"><span class="toc-text">Common error and solution during running and building connections between EOSIO components:</span></a></li></ol>
     </div>
   </section>
 
@@ -537,7 +525,7 @@ assertion failure with message: cannot use transfer flag if delegating to self</
         
           <li><a class="flat-box" title="/categories/optimization/" href="/categories/optimization/"><div class="name">optimization</div><div class="badge">(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(3)</div></a></li>
         
           <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(4)</div></a></li>
         
