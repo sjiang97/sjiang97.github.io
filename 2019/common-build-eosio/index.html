@@ -308,41 +308,35 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h3 id="common-error-and-solution-during-compiling-eosio-components"><a class="markdownIt-Anchor" href="#common-error-and-solution-during-compiling-eosio-components"></a> Common error and solution during compiling EOSIO components:</h3>
-<blockquote>
+          <h3 id="Common-error-and-solution-during-compiling-EOSIO-components"><a href="#Common-error-and-solution-during-compiling-EOSIO-components" class="headerlink" title="Common error and solution during compiling EOSIO components:"></a>Common error and solution during compiling EOSIO components:</h3><blockquote>
 <p>Doesn’t have boost or boost library is lower than required.</p>
 </blockquote>
 <p>Solution: It seems the latest version of boost is not in the ubuntu package management right now. I compiled and installed it from source to solve this issue. I installed version 1.67. But the minimum version it requires is 1.57 (I remember).</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O boost_1_67_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.67.0/boost_1_67_0.tar.gz/download</span><br><span class="line">tar xzvf boost_1_67_0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> boost_1_67_0/</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>Then, get the required libraries and setup. The one required at here is icu for boost::regex. But I installed all of them in case they will be needed in some other places.</p>
+<p>Then, get the required libraries and setup. The one required at here is icu for boost::regex. But I installed all of them in case they will be needed in some other places. </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev</span><br><span class="line">./bootstrap.sh --prefix=/usr/</span><br></pre></td></tr></table></figure>
 <p>Then, build it and install it:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./b2 <span class="comment"># Build it</span></span><br><span class="line">sudo ./b2 install <span class="comment"># install it</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Add the installation prefix of “eosio” to CMAKE_PREFIX_PATH or set<br>
-“eosio_DIR” to a directory containing one of the above files.  If “eosio”<br>
-provides a separate development package or SDK, be sure it has been<br>
-installed.</p>
+<p>Add the installation prefix of “eosio” to CMAKE_PREFIX_PATH or set<br>  “eosio_DIR” to a directory containing one of the above files.  If “eosio”<br>  provides a separate development package or SDK, be sure it has been<br>  installed.</p>
 </blockquote>
 <p>Solution: Error happens while compiling EOSIO.contracts.</p>
 <ol>
-<li>
-<p>Be sure EOS is compiled and installed from source instead of ubuntu package.</p>
+<li><p>Be sure EOS is compiled and installed from source instead of ubuntu package.</p>
 </li>
-<li>
-<p>If the EOS is compiled and installed from source. You could find the place for this Cmake file easily.</p>
+<li><p>If the EOS is compiled and installed from source. You could find the place for this Cmake file easily. </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> EOS_BUILD_PATH <span class="comment"># EOS_BUILD_PATH is the directory EOS was cloned to.</span></span><br><span class="line">find . -name <span class="string">"eosio-config.cmake"</span></span><br><span class="line"><span class="built_in">export</span> eosio_DIR=<span class="string">"PATH_FOUND"</span> <span class="comment"># PATH_FOUND is the path found up by the previous command</span></span><br></pre></td></tr></table></figure>
-<p>The path is usually at  <code>EOS_BUILD_PATH/build/lib/cmake/eosio/</code>. And it is good to use absolute directory.</p>
+<p>The path is usually at  <code>EOS_BUILD_PATH/build/lib/cmake/eosio/</code>. And it is good to use absolute directory. </p>
 <p>And then, do <code>./build.sh</code> again.</p>
 </li>
 </ol>
 <blockquote>
-<p>Doesn’t have llvm or doesn’t have required version of llvm while building eosio.cdt.</p>
+<p>Doesn’t have llvm or doesn’t have required version of llvm while building eosio.cdt. </p>
 </blockquote>
 <p>Solution: llvm package is from another repository. So, add <code>--recursive</code> while git clone.</p>
 <blockquote>
-<p>Did install EOS by using the default installing shell but can not start the program by simply run nodeos from terminal.</p>
+<p>Did install EOS by using the default installing shell but can not start the program by simply run nodeos from terminal.  </p>
 </blockquote>
 <p>Solution: I find this happens on ubuntu 18.04. Use the absolute path to start server instead. Usually, the nodeos program is at <code>EOSIO_BUILD_PATH/build/bin/nodeos</code>.</p>
 
@@ -410,16 +404,16 @@ installed.</p>
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/Bitcoin_local_network/" rel="prev" title="Build Bitcoin local network">
+                                <a href="/2019/EOSIO_local_network/" rel="prev" title="Build EOSIO local network">
                                     
-                                        Build Bitcoin local network
+                                        Build EOSIO local network
                                     
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/Bitcoin/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Bitcoin</a>
+                                    <a class="tag" href="/tags/eos/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos</a> <a class="tag" href="/tags/eosio-contracts/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eosio.contracts</a> <a class="tag" href="/tags/eos-cdt/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>eos.cdt</a>
                                 </h6>
                             
                         </span>
@@ -490,7 +484,7 @@ installed.</p>
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#common-error-and-solution-during-compiling-eosio-components"><span class="toc-text"> Common error and solution during compiling EOSIO components:</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-error-and-solution-during-compiling-EOSIO-components"><span class="toc-text">Common error and solution during compiling EOSIO components:</span></a></li></ol>
     </div>
   </section>
 
