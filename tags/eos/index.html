@@ -321,8 +321,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components"><a href="#Common-error-and-solution-during-running-and-building-connections-between-EOSIO-components" class="headerlink" title="Common error and solution during running and building connections between EOSIO components:"></a>Common error and solution during running and building connections between EOSIO components:</h3><blockquote>
-<p>Error 3050000: Action validate exception<br>Error Details:<br>inline action’s authorizing actor eosio.ram does not exist</p>
+      <h3 id="common-error-and-solution-during-running-and-building-connections-between-eosio-components"><a class="markdownIt-Anchor" href="#common-error-and-solution-during-running-and-building-connections-between-eosio-components"></a> Common error and solution during running and building connections between EOSIO components:</h3>
+<blockquote>
+<p>Error 3050000: Action validate exception<br>
+Error Details:<br>
+inline action’s authorizing actor eosio.ram does not exist</p>
 </blockquote>
 <p>Solution: Make sure the eosio.ram was created before setting any contracts(eosio.system, eosio.msig). It should also be created before initializing system accounts. Otherwise this error will show up when creating block producer or voter.</p>
       
@@ -432,7 +435,8 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Common-error-and-solution-during-compiling-EOSIO-components"><a href="#Common-error-and-solution-during-compiling-EOSIO-components" class="headerlink" title="Common error and solution during compiling EOSIO components:"></a>Common error and solution during compiling EOSIO components:</h3><blockquote>
+      <h3 id="common-error-and-solution-during-compiling-eosio-components"><a class="markdownIt-Anchor" href="#common-error-and-solution-during-compiling-eosio-components"></a> Common error and solution during compiling EOSIO components:</h3>
+<blockquote>
 <p>Doesn’t have boost or boost library is lower than required.</p>
 </blockquote>
 <p>Solution: It seems the latest version of boost is not in the ubuntu package management right now. I compiled and installed it from source to solve this issue. I installed version 1.67. But the minimum version it requires is 1.57 (I remember).</p>
@@ -544,13 +548,19 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>The whole system is made up of three components in order to build local environment:</p>
+      <h3 id="some-experience-on-building-eosio-local-network"><a class="markdownIt-Anchor" href="#some-experience-on-building-eosio-local-network"></a> Some experience on building EOSIO local network</h3>
+<h4 id="basic-info"><a class="markdownIt-Anchor" href="#basic-info"></a> Basic info</h4>
+<p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>
+The whole system is made up of three components in order to build local environment:</p>
 <ul>
-<li><p><strong>EOS</strong> - Main net. Basic communication </p>
+<li>
+<p><strong>EOS</strong> - Main net. Basic communication</p>
 </li>
-<li><p><strong>EOS.CDT</strong> - Developer package. API for application</p>
+<li>
+<p><strong>EOS.CDT</strong> - Developer package. API for application</p>
 </li>
-<li><p><strong>EOS.CONTRACT</strong> - super user account setup. It store information about different user and send call to system, like create an voter account.</p>
+<li>
+<p><strong>EOS.CONTRACT</strong> - super user account setup. It store information about different user and send call to system, like create an voter account.</p>
 </li>
 </ul>
 <p>Following is the basic network structure of EOSIO</p>
@@ -640,9 +650,13 @@
         
           <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(5)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(0)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/HTML/website/" href="/categories/website/HTML/website/"><div class="name">website</div><div class="badge">(0)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/HTML/website/JS/" href="/categories/website/HTML/website/JS/"><div class="name">JS</div><div class="badge">(0)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/website/Hexo/" href="/categories/website/Hexo/"><div class="name">Hexo</div><div class="badge">(1)</div></a></li>
         

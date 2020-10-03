@@ -308,51 +308,65 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <p>This is a Group project done by me. I will talk about my design and usage instruction in the following space. Detailed implementation could be view at <a href="https://github.com/ShaokangJiang/A-JavaFX-project" target="_blank" rel="noopener">This repository</a>. </p>
+          <p>This is a Group project done by me. I will talk about my design and usage instruction in the following space. Detailed implementation could be view at <a href="https://github.com/ShaokangJiang/A-JavaFX-project" target="_blank" rel="noopener">This repository</a>.</p>
 <p><strong>Github Page:</strong> <a href="https://github.com/ShaokangJiang/A-JavaFX-project" target="_blank" rel="noopener">https://github.com/ShaokangJiang/A-JavaFX-project</a></p>
 <p><strong>Compiled version:</strong> <a href="https://github.com/ShaokangJiang/A-JavaFX-project/releases" target="_blank" rel="noopener">https://github.com/ShaokangJiang/A-JavaFX-project/releases</a></p>
 <p><strong>Code version:</strong> <a href="https://github.com/ShaokangJiang/A-JavaFX-project/archive/0.9.zip" target="_blank" rel="noopener">https://github.com/ShaokangJiang/A-JavaFX-project/archive/0.9.zip</a></p>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><a id="more"></a>
-<h4 id="Command-Line-Guide"><a href="#Command-Line-Guide" class="headerlink" title="Command Line Guide"></a>Command Line Guide</h4><p>It is possible to run from command line or use command line version to interrupt with basic feature, including import. It has two mode, command line mode and  command line start. In Command line start, you can specify your argument and then program will enter GUI automatically. In command line mode, you can decide the time you want to enter GUI interface. </p>
-<h5 id="Command-line-mode"><a href="#Command-line-mode" class="headerlink" title="Command line mode"></a>Command line mode</h5><p>In this mode, you will see an interface like this in command mode:</p>
+<h2 id="usage"><a class="markdownIt-Anchor" href="#usage"></a> Usage</h2>
+<a id="more"></a>
+<h4 id="command-line-guide"><a class="markdownIt-Anchor" href="#command-line-guide"></a> Command Line Guide</h4>
+<p>It is possible to run from command line or use command line version to interrupt with basic feature, including import. It has two mode, command line mode and  command line start. In Command line start, you can specify your argument and then program will enter GUI automatically. In command line mode, you can decide the time you want to enter GUI interface.</p>
+<h5 id="command-line-mode"><a class="markdownIt-Anchor" href="#command-line-mode"></a> Command line mode</h5>
+<p>In this mode, you will see an interface like this in command mode:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Welcome to <span class="built_in">command</span> mode of this program. Because of the requirement of this assignment,</span><br><span class="line"> majority effort should be <span class="keyword">done</span> <span class="keyword">in</span> GUI. This part is only <span class="keyword">for</span> <span class="built_in">command</span> line import <span class="keyword">function</span>. </span><br><span class="line">Usage: 	 -f <span class="string">"path/to/file"</span> -- This file will be imported. Should be csv files. Seperate using ; <span class="keyword">if</span> there are multiple files</span><br><span class="line">	 -d <span class="string">"path/to/file"</span> -- This will import any csv file <span class="keyword">in</span> the directory, <span class="keyword">if</span> any of them contain incorrect formatted data, no data will be imported </span><br><span class="line">	 -h -- <span class="built_in">print</span> <span class="built_in">help</span> message </span><br><span class="line">	 -g -- start GUI </span><br><span class="line"></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 <p>To enter it:</p>
 <blockquote>
 <p><strong>Path to JavaFx:</strong> The path to the library directory to JavaFx. Sample, <code>/home/openjfx-11.0.2_linux-x64_bin-sdk/javafx-sdk-11.0.2/lib</code></p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java --<span class="keyword">module</span>-path <span class="string">"&lt;Path to Javafx&gt;"</span> --add-modules javafx.controls,javafx.fxml -jar executable.jar -c</span><br></pre></td></tr></table></figure>
-<h5 id="Command-line-start"><a href="#Command-line-start" class="headerlink" title="Command line start"></a>Command line start</h5><p>In this mode, it has two options, either import a directory of csv files or import a list of files separate with ‘;’;</p>
-<p>To import a directory of csv files: use <code>-d</code> option, e.g. <code>-d \home\csv\</code>. To import a list of files separate with ‘;’, no option argument required, simple add absolute path of files and separate different files with ‘;’, e.g. <code>\home\csv\a.csv;\home\csv\b.csv</code> </p>
-<p>Program will start GUI automatically after importing. </p>
+<h5 id="command-line-start"><a class="markdownIt-Anchor" href="#command-line-start"></a> Command line start</h5>
+<p>In this mode, it has two options, either import a directory of csv files or import a list of files separate with ‘;’;</p>
+<p>To import a directory of csv files: use <code>-d</code> option, e.g. <code>-d \home\csv\</code>. To import a list of files separate with ‘;’, no option argument required, simple add absolute path of files and separate different files with ‘;’, e.g. <code>\home\csv\a.csv;\home\csv\b.csv</code></p>
+<p>Program will start GUI automatically after importing.</p>
 <p>To enter GUI with importing a list of files separate with ‘;’:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java --<span class="keyword">module</span>-path <span class="string">"&lt;Path to Javafx&gt;"</span> --add-modules javafx.controls,javafx.fxml -jar executable.jar &lt;Path to csv file&gt;</span><br></pre></td></tr></table></figure>
-<p>Or, start with importing a directory: </p>
+<p>Or, start with importing a directory:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java --<span class="keyword">module</span>-path <span class="string">"&lt;Path to Javafx&gt;"</span> --add-modules javafx.controls,javafx.fxml -jar executable.jar -d &lt;Path to csv directory&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="Running"><a href="#Running" class="headerlink" title="Running"></a>Running</h4><h5 id="Download-from-release-page-or-compile-from-source"><a href="#Download-from-release-page-or-compile-from-source" class="headerlink" title="Download from release page or compile from source."></a>Download from release page or compile from source.</h5><blockquote>
+<h4 id="running"><a class="markdownIt-Anchor" href="#running"></a> Running</h4>
+<h5 id="download-from-release-page-or-compile-from-source"><a class="markdownIt-Anchor" href="#download-from-release-page-or-compile-from-source"></a> Download from release page or compile from source.</h5>
+<blockquote>
 <p><strong>Path to JavaFx:</strong> The path to the library directory to JavaFx. Sample, <code>/home/openjfx-11.0.2_linux-x64_bin-sdk/javafx-sdk-11.0.2/lib</code></p>
 </blockquote>
-<h6 id="Download-from-release-page-on-Github"><a href="#Download-from-release-page-on-Github" class="headerlink" title="Download from release page on Github:"></a>Download from release page on Github:</h6><ol>
+<h6 id="download-from-release-page-on-github"><a class="markdownIt-Anchor" href="#download-from-release-page-on-github"></a> Download from release page on Github:</h6>
+<ol>
 <li>Download <a href="https://openjfx.io/" target="_blank" rel="noopener">JavaFX</a> (their official website) and download <code>executable.jar</code> from release page</li>
 <li><code>java --module-path &quot;&lt;Path to Javafx&gt;&quot; --add-modules javafx.controls,javafx.fxml -jar executable.jar</code></li>
 </ol>
-<h6 id="Download-and-compile-from-source-page"><a href="#Download-and-compile-from-source-page" class="headerlink" title="Download and compile from source page:"></a>Download and compile from source page:</h6><blockquote>
+<h6 id="download-and-compile-from-source-page"><a class="markdownIt-Anchor" href="#download-and-compile-from-source-page"></a> Download and compile from source page:</h6>
+<blockquote>
 <p><strong>NOT RECOMMEND</strong> as too many arguments, dependencies and it is easy to be wrong</p>
 </blockquote>
-<h4 id="Source-data"><a href="#Source-data" class="headerlink" title="Source data:"></a>Source data:</h4><p>Source data should be in the format, it means this farm uses those amount of milk in this date:</p>
+<h4 id="source-data"><a class="markdownIt-Anchor" href="#source-data"></a> Source data:</h4>
+<p>Source data should be in the format, it means this farm uses those amount of milk in this date:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">date,id,weight</span><br><span class="line">2019-1-1,id 0,6760</span><br><span class="line">2019-1-1,id 1,8644</span><br><span class="line">2019-1-1,id 2,3547</span><br><span class="line">2019-1-2,id 0,6824</span><br></pre></td></tr></table></figure>
-<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><p>An overall agreement of this design is that those function should not only work for this project but also for other project. </p>
-<h4 id="Basic-components"><a href="#Basic-components" class="headerlink" title="Basic components:"></a>Basic components:</h4><img src="/2020/projects/A-JavaFx-project/2.png">
-<p>It contains the structure to use in this program. </p>
-<h4 id="Manager-amp-Report"><a href="#Manager-amp-Report" class="headerlink" title="Manager&amp;Report:"></a>Manager&amp;Report:</h4><img src="/2020/projects/A-JavaFx-project/3.png">
-<p>It could be the heart of this program’s non-GUI part, it contains method to handle with file, manage farmers. </p>
+<h2 id="design"><a class="markdownIt-Anchor" href="#design"></a> Design</h2>
+<p>An overall agreement of this design is that those function should not only work for this project but also for other project.</p>
+<h4 id="basic-components"><a class="markdownIt-Anchor" href="#basic-components"></a> Basic components:</h4>
+<img src="/2020/projects/A-JavaFx-project/2.png">
+<p>It contains the structure to use in this program.</p>
+<h4 id="managerreport"><a class="markdownIt-Anchor" href="#managerreport"></a> Manager&amp;Report:</h4>
+<img src="/2020/projects/A-JavaFx-project/3.png">
+<p>It could be the heart of this program’s non-GUI part, it contains method to handle with file, manage farmers.</p>
 <p>Report part is to generate different GUI report and then let it show up in the major window, <code>Notification.java</code>.</p>
-<h4 id="GUI-components"><a href="#GUI-components" class="headerlink" title="GUI components:"></a>GUI components:</h4><img src="/2020/projects/A-JavaFx-project/1.png">
+<h4 id="gui-components"><a class="markdownIt-Anchor" href="#gui-components"></a> GUI components:</h4>
+<img src="/2020/projects/A-JavaFx-project/1.png">
 <p>Components that are not shown in the graph are two, <code>alert1.java</code>, <code>ChoiceWindow.java</code>. One component is the alert class to show various alerting information.  <code>ChoiceWindow.java</code> has all window required for choosing. Such as choosing for filter categories. This is a helper class to generate interface for user to select filter or other categories they want. Such as, choosing which function you want to use to manage data</p>
-<p>The other are major part either control or show interfaces to user.  <code>Main.java</code> also has the responsibility to handle command line input. </p>
-<h4 id="Detailed-design"><a href="#Detailed-design" class="headerlink" title="Detailed design"></a>Detailed design</h4><p>A detailed class by class design document and agreement could be view at here: </p>
+<p>The other are major part either control or show interfaces to user.  <code>Main.java</code> also has the responsibility to handle command line input.</p>
+<h4 id="detailed-design"><a class="markdownIt-Anchor" href="#detailed-design"></a> Detailed design</h4>
+<p>A detailed class by class design document and agreement could be view at here:</p>
 <blockquote>
-<p>This is the initial thought of design by me <strong>before</strong> the actual implementation, so the data structure used to store farmers has changed to <code>Hashmap</code> and there are  lot of minor changes. To see the latest version, go to <a href="https://github.com/ShaokangJiang/A-JavaFX-project" target="_blank" rel="noopener">This repository</a>. </p>
-<p>And I have no idea about JavaFx when I design this structure, so it is possible that some places have structure error. </p>
+<p>This is the initial thought of design by me <strong>before</strong> the actual implementation, so the data structure used to store farmers has changed to <code>Hashmap</code> and there are  lot of minor changes. To see the latest version, go to <a href="https://github.com/ShaokangJiang/A-JavaFX-project" target="_blank" rel="noopener">This repository</a>.</p>
+<p>And I have no idea about JavaFx when I design this structure, so it is possible that some places have structure error.</p>
 </blockquote>
 
 
@@ -362,12 +376,15 @@
 
 
 
-<h4 id="Special-notes"><a href="#Special-notes" class="headerlink" title="Special notes:"></a>Special notes:</h4><p><strong>It requires oracle java 1.9(openjdk on linux) or above</strong></p>
-<h2 id="Credit"><a href="#Credit" class="headerlink" title="Credit:"></a>Credit:</h2><p>As you might see from the category tag, this is a project for a coursework. Any information for this section has been removed to meet the requirement and ambiguous copyright rules from the professor. </p>
-<p>Their requirement is to remove any description regard to the assignment. I believe this document has less than 0.1% similarity with the original description document, this should meet the requirement. </p>
-<p>Basically, part of the thought, like what this program should have, all of the design, all of the implementation is done by me. </p>
+<h4 id="special-notes"><a class="markdownIt-Anchor" href="#special-notes"></a> Special notes:</h4>
+<p><strong>It requires oracle java 1.9(openjdk on linux) or above</strong></p>
+<h2 id="credit"><a class="markdownIt-Anchor" href="#credit"></a> Credit:</h2>
+<p>As you might see from the category tag, this is a project for a coursework. Any information for this section has been removed to meet the requirement and ambiguous copyright rules from the professor.</p>
+<p>Their requirement is to remove any description regard to the assignment. I believe this document has less than 0.1% similarity with the original description document, this should meet the requirement.</p>
+<p>Basically, part of the thought, like what this program should have, all of the design, all of the implementation is done by me.</p>
 <p>This page is created for fun and not intended to violate any copyright rule. So, let me know if this version is still inappropriate via <a href="mailto:sjiang97@wisc.edu" target="_blank" rel="noopener">email</a>.</p>
-<h2 id="Last-Note"><a href="#Last-Note" class="headerlink" title="Last Note:"></a>Last Note:</h2><p><code>JavaFX</code> should be good for multi-platform usage and it is easy to build a good, well-formed application. But it is a little bit different than the other, including <code>swing</code>, <code>awt</code>. So, we can not use the same thought to think about <code>JavaFX</code>.</p>
+<h2 id="last-note"><a class="markdownIt-Anchor" href="#last-note"></a> Last Note:</h2>
+<p><code>JavaFX</code> should be good for multi-platform usage and it is easy to build a good, well-formed application. But it is a little bit different than the other, including <code>swing</code>, <code>awt</code>. So, we can not use the same thought to think about <code>JavaFX</code>.</p>
 
         </div>
         
@@ -508,7 +525,7 @@
 </header>
 
     <div class="content material">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Command-Line-Guide"><span class="toc-text">Command Line Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Command-line-mode"><span class="toc-text">Command line mode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Command-line-start"><span class="toc-text">Command line start</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Running"><span class="toc-text">Running</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Download-from-release-page-or-compile-from-source"><span class="toc-text">Download from release page or compile from source.</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Download-from-release-page-on-Github"><span class="toc-text">Download from release page on Github:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Download-and-compile-from-source-page"><span class="toc-text">Download and compile from source page:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Source-data"><span class="toc-text">Source data:</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Design"><span class="toc-text">Design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basic-components"><span class="toc-text">Basic components:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Manager-amp-Report"><span class="toc-text">Manager&amp;Report:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GUI-components"><span class="toc-text">GUI components:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Detailed-design"><span class="toc-text">Detailed design</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Special-notes"><span class="toc-text">Special notes:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Credit"><span class="toc-text">Credit:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Last-Note"><span class="toc-text">Last Note:</span></a></li>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#usage"><span class="toc-text"> Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#command-line-guide"><span class="toc-text"> Command Line Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#command-line-mode"><span class="toc-text"> Command line mode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#command-line-start"><span class="toc-text"> Command line start</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#running"><span class="toc-text"> Running</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#download-from-release-page-or-compile-from-source"><span class="toc-text"> Download from release page or compile from source.</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#download-from-release-page-on-github"><span class="toc-text"> Download from release page on Github:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#download-and-compile-from-source-page"><span class="toc-text"> Download and compile from source page:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#source-data"><span class="toc-text"> Source data:</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#design"><span class="toc-text"> Design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#basic-components"><span class="toc-text"> Basic components:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#managerreport"><span class="toc-text"> Manager&amp;Report:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gui-components"><span class="toc-text"> GUI components:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#detailed-design"><span class="toc-text"> Detailed design</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#special-notes"><span class="toc-text"> Special notes:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#credit"><span class="toc-text"> Credit:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#last-note"><span class="toc-text"> Last Note:</span></a></li>
     </div>
   </section>
 
@@ -549,9 +566,13 @@
         
           <li><a class="flat-box" title="/categories/selection/" href="/categories/selection/"><div class="name">selection</div><div class="badge">(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/website/" href="/categories/website/"><div class="name">website</div><div class="badge">(5)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/website/HTML/" href="/categories/website/HTML/"><div class="name">HTML</div><div class="badge">(0)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/HTML/website/" href="/categories/website/HTML/website/"><div class="name">website</div><div class="badge">(0)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/website/HTML/website/JS/" href="/categories/website/HTML/website/JS/"><div class="name">JS</div><div class="badge">(0)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/website/Hexo/" href="/categories/website/Hexo/"><div class="name">Hexo</div><div class="badge">(1)</div></a></li>
         
