@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/about/index.html</loc>
+    
+    <lastmod>2020-10-14T15:12:42.505Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2020/Capstone-prooject-design-specification-v0-1/</loc>
     
     <lastmod>2020-10-03T16:29:49.024Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://shaokang.ga/2019/projects/College-library-optimization-problem/</loc>
     
     <lastmod>2020-05-03T02:33:46.906Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/about/index.html</loc>
-    
-    <lastmod>2020-01-24T00:37:08.623Z</lastmod>
     
   </url>
   
