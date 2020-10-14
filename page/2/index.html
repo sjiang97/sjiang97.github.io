@@ -265,7 +265,8 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Common-error-and-solution-during-compiling-EOSIO-components"><a href="#Common-error-and-solution-during-compiling-EOSIO-components" class="headerlink" title="Common error and solution during compiling EOSIO components:"></a>Common error and solution during compiling EOSIO components:</h3><blockquote>
+      <h3 id="common-error-and-solution-during-compiling-eosio-components"><a class="markdownIt-Anchor" href="#common-error-and-solution-during-compiling-eosio-components"></a> Common error and solution during compiling EOSIO components:</h3>
+<blockquote>
 <p>Doesn’t have boost or boost library is lower than required.</p>
 </blockquote>
 <p>Solution: It seems the latest version of boost is not in the ubuntu package management right now. I compiled and installed it from source to solve this issue. I installed version 1.67. But the minimum version it requires is 1.57 (I remember).</p>
@@ -273,6 +274,129 @@
       
         <div class="readmore">
           <a href="/2019/common-build-eosio/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/eos/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eos</a>
+        
+          <a href="/tags/eosio-contracts/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eosio.contracts</a>
+        
+          <a href="/tags/eos-cdt/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eos.cdt</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/EOSIO_local_network/">
+      Build EOSIO local network
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="https://shaokang.ga" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Shaokang Jiang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>06/13/2019</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class="new-meta-item category">
+    <a href="/categories/Cryptocurrency-Application/EOSIO/" rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Cryptocurrency Application&nbsp;/&nbsp;EOSIO</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="some-experience-on-building-eosio-local-network"><a class="markdownIt-Anchor" href="#some-experience-on-building-eosio-local-network"></a> Some experience on building EOSIO local network</h3>
+<h4 id="basic-info"><a class="markdownIt-Anchor" href="#basic-info"></a> Basic info</h4>
+<p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>
+The whole system is made up of three components in order to build local environment:</p>
+<ul>
+<li>
+<p><strong>EOS</strong> - Main net. Basic communication</p>
+</li>
+<li>
+<p><strong>EOS.CDT</strong> - Developer package. API for application</p>
+</li>
+<li>
+<p><strong>EOS.CONTRACT</strong> - super user account setup. It store information about different user and send call to system, like create an voter account.</p>
+</li>
+</ul>
+<p>Following is the basic network structure of EOSIO</p>
+      
+        <div class="readmore">
+          <a href="/2019/EOSIO_local_network/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             Read More
           </a>
@@ -377,9 +501,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Some-experience-on-building-Bitcoin-local-network"><a href="#Some-experience-on-building-Bitcoin-local-network" class="headerlink" title="Some experience on building Bitcoin local network"></a>Some experience on building Bitcoin local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>Bitcoin is an client based on proof of work(POW). </p>
-<p>Bitcoin core is a client of official bitcoin network. After some tests, I find the local network for bitcoin is good for testing wallet application but hard for testing mining function.  In this page, I am going to discuss some experience of mine on building the local test environment for bitcoin core. </p>
-<h5 id="Compile-amp-Installation"><a href="#Compile-amp-Installation" class="headerlink" title="Compile &amp; Installation"></a>Compile &amp; Installation</h5>
+      <h3 id="some-experience-on-building-bitcoin-local-network"><a class="markdownIt-Anchor" href="#some-experience-on-building-bitcoin-local-network"></a> Some experience on building Bitcoin local network</h3>
+<h4 id="basic-info"><a class="markdownIt-Anchor" href="#basic-info"></a> Basic info</h4>
+<p>Bitcoin is an client based on proof of work(POW).</p>
+<p>Bitcoin core is a client of official bitcoin network. After some tests, I find the local network for bitcoin is good for testing wallet application but hard for testing mining function.  In this page, I am going to discuss some experience of mine on building the local test environment for bitcoin core.</p>
+<h5 id="compile-installation"><a class="markdownIt-Anchor" href="#compile-installation"></a> Compile &amp; Installation</h5>
       
         <div class="readmore">
           <a href="/2019/Bitcoin_local_network/" class="flat-box">
@@ -393,123 +519,6 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/Bitcoin/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>Bitcoin</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
-  
-
-
-  <section class="meta">
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/EOSIO_local_network/">
-      Build EOSIO local network
-    </a>
-  </h2>
-
-
-      
-      <div class="new-meta-box">
-        
-          
-        
-          
-            
-  <div class="new-meta-item author">
-    <a href="https://shaokang.ga" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Shaokang Jiang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class="notlink">
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>06/13/2019</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class="new-meta-item category">
-    <a href="/categories/Cryptocurrency-Application/EOSIO/" rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Cryptocurrency Application&nbsp;/&nbsp;EOSIO</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="Some-experience-on-building-EOSIO-local-network"><a href="#Some-experience-on-building-EOSIO-local-network" class="headerlink" title="Some experience on building EOSIO local network"></a>Some experience on building EOSIO local network</h3><h4 id="Basic-info"><a href="#Basic-info" class="headerlink" title="Basic info"></a>Basic info</h4><p>EOSIO is an application based on proof of stake. I am going to discuss my experience on setting up the local test environment for EOSIO. The test version for EOS is 1.7 and test environment is Ubuntu 18.04.<br>The whole system is made up of three components in order to build local environment:</p>
-<ul>
-<li><p><strong>EOS</strong> - Main net. Basic communication </p>
-</li>
-<li><p><strong>EOS.CDT</strong> - Developer package. API for application</p>
-</li>
-<li><p><strong>EOS.CONTRACT</strong> - super user account setup. It store information about different user and send call to system, like create an voter account.</p>
-</li>
-</ul>
-<p>Following is the basic network structure of EOSIO</p>
-      
-        <div class="readmore">
-          <a href="/2019/EOSIO_local_network/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/eos/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eos</a>
-        
-          <a href="/tags/eosio-contracts/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eosio.contracts</a>
-        
-          <a href="/tags/eos-cdt/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>eos.cdt</a>
         
       </div>
     
@@ -600,10 +609,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Reservation-system-website-application-deployed"><a href="#Reservation-system-website-application-deployed" class="headerlink" title="Reservation system website application deployed"></a>Reservation system website application deployed</h3><p>The website made by me for my CS425 project has been deployed and works normally at <a href="https://cs425a.azurewebsites.net" target="_blank" rel="noopener">This Website</a>. In webpage browser is at bottom.</p>
+      <h3 id="reservation-system-website-application-deployed"><a class="markdownIt-Anchor" href="#reservation-system-website-application-deployed"></a> Reservation system website application deployed</h3>
+<p>The website made by me for my CS425 project has been deployed and works normally at <a href="https://cs425a.azurewebsites.net" target="_blank" rel="noopener">This Website</a>. In webpage browser is at bottom.</p>
 <p>Source code is at <a href="https://github.com/ShaokangJiang/CS425-project/blob/master/README.md" target="_blank" rel="noopener">My Github Page</a></p>
-<p>This is a website made by using SQL as database and <a href="https://materializecss.com/" target="_blank" rel="noopener">Material Theme</a> as layout. </p>
-<h4 id="Test-account-information"><a href="#Test-account-information" class="headerlink" title="Test account information:"></a>Test account information:</h4>
+<p>This is a website made by using SQL as database and <a href="https://materializecss.com/" target="_blank" rel="noopener">Material Theme</a> as layout.</p>
+<h4 id="test-account-information"><a class="markdownIt-Anchor" href="#test-account-information"></a> Test account information:</h4>
       
         <div class="readmore">
           <a href="/2019/projects/Website for CS425 project/" class="flat-box">
@@ -709,7 +719,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="德克萨斯奥斯丁"><a href="#德克萨斯奥斯丁" class="headerlink" title="德克萨斯奥斯丁"></a>德克萨斯奥斯丁</h2><div class="table-container">
+      <h2 id="德克萨斯奥斯丁"><a class="markdownIt-Anchor" href="#德克萨斯奥斯丁"></a> 德克萨斯奥斯丁</h2>
 <table>
 <thead>
 <tr>
@@ -740,7 +750,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>*:<strong>We will reopen for Fall 2021 applications around October 2020. Please note the following deadlines have not been updated for Fall 2021 applications.</strong></p>
       
         <div class="readmore">
@@ -839,7 +848,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="华盛顿大学"><a href="#华盛顿大学" class="headerlink" title="华盛顿大学"></a><a href="https://www.cs.washington.edu/" target="_blank" rel="noopener">华盛顿大学</a></h2><div class="table-container">
+      <h2 id="华盛顿大学"><a class="markdownIt-Anchor" href="#华盛顿大学"></a> <a href="https://www.cs.washington.edu/" target="_blank" rel="noopener">华盛顿大学</a></h2>
 <table>
 <thead>
 <tr>
@@ -870,7 +879,6 @@
 </tr>
 </tbody>
 </table>
-</div>
       
         <div class="readmore">
           <a href="/2018/selection/Selection-Important/" class="flat-box">
@@ -968,7 +976,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="UWmadison"><a href="#UWmadison" class="headerlink" title="UWmadison"></a>UWmadison</h2><div class="table-container">
+      <h2 id="uwmadison"><a class="markdownIt-Anchor" href="#uwmadison"></a> UWmadison</h2>
 <table>
 <thead>
 <tr>
@@ -999,7 +1007,6 @@
 </tr>
 </tbody>
 </table>
-</div>
       
         <div class="readmore">
           <a href="/2018/selection/Selection-ExImportant/" class="flat-box">
@@ -1097,11 +1104,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="Hatefate-website-application-deployed"><a href="#Hatefate-website-application-deployed" class="headerlink" title="Hatefate website application deployed"></a>Hatefate website application deployed</h3><p>The website made by me for my CS100 project has been deployed and works normally at <a href="https://hatefate.azurewebsites.net" target="_blank" rel="noopener">This Website</a>. In webpage browser is at bottom.</p>
+      <h3 id="hatefate-website-application-deployed"><a class="markdownIt-Anchor" href="#hatefate-website-application-deployed"></a> Hatefate website application deployed</h3>
+<p>The website made by me for my CS100 project has been deployed and works normally at <a href="https://hatefate.azurewebsites.net" target="_blank" rel="noopener">This Website</a>. In webpage browser is at bottom.</p>
 <p>Source code is at <a href="https://github.com/ShaokangJiang/CS100Website" target="_blank" rel="noopener">This Github Page</a></p>
-<p>This is a website made by using SQL as database and <a href="https://materializecss.com/" target="_blank" rel="noopener">Material Theme</a> as layout. </p>
-<p>Function included: login via email, login via account name, register, reset password via email, set your favorites, and find people who has the same favorites as you. </p>
-<p>Due to the reason that the domain(huangsk100.me) was expired. This website is for demo only right now. For testing, test account information is as follows:</p>
+<p>This is a website made by using SQL as database and <a href="https://materializecss.com/" target="_blank" rel="noopener">Material Theme</a> as layout.</p>
+<p>Function included: login via email, login via account name, register, reset password via email, set your favorites, and find people who has the same favorites as you.</p>
+<p>Due to the reason that the domain(<a href="http://huangsk100.me" target="_blank" rel="noopener">huangsk100.me</a>) was expired. This website is for demo only right now. For testing, test account information is as follows:</p>
       
         <div class="readmore">
           <a href="/2017/projects/Website for CS100 project/" class="flat-box">
