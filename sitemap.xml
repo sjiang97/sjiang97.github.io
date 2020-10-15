@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/projects/index.html</loc>
+    
+    <lastmod>2020-10-15T20:28:47.965Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2020/Capstone-prooject-design-specification-v0-1/</loc>
     
     <lastmod>2020-10-14T20:49:36.256Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>https://shaokang.ga/2019/Bitcoin_local_network/</loc>
     
     <lastmod>2019-06-19T06:50:21.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/projects/index.html</loc>
-    
-    <lastmod>2019-06-13T13:56:42.818Z</lastmod>
     
   </url>
   
