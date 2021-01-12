@@ -81,12 +81,18 @@
     
     
     <entry>
-      <title>Publication of Financial website</title>
+      <title>Publication for Financial website</title>
       <link href="/2020/projects/Publication-of-Financial-website/"/>
       <url>/2020/projects/Publication-of-Financial-website/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>This is the product being produced based on [Design specification], most parts stay the same as design.</p><p>More details regarding to benefits and incomparable feature could be saw below:</p><a id="more"></a>]]></content>
       
+      
+      <categories>
+          
+          <category> website </category>
+          
+      </categories>
       
       
     </entry>
