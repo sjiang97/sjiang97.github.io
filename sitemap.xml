@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/2020/Build-Cloudflare-worker-with-endpoint/</loc>
+    
+    <lastmod>2021-01-13T00:07:40.371Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2020/projects/Publication-of-Financial-website/</loc>
     
-    <lastmod>2021-01-12T23:54:31.998Z</lastmod>
+    <lastmod>2021-01-12T23:59:57.783Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>https://shaokang.ga/2021/Actively-updating/</loc>
     
     <lastmod>2021-01-12T22:55:17.964Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/2020/Build-Cloudflare-worker-with-endpoint/</loc>
-    
-    <lastmod>2021-01-12T18:57:26.634Z</lastmod>
     
   </url>
   
