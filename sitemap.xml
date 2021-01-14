@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/2021/projects/Simple-Chat-App/</loc>
+    
+    <lastmod>2021-01-14T08:00:56.283Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2021/projects/Financial-organization-phone-app-stage-2/</loc>
     
-    <lastmod>2021-01-14T07:51:20.612Z</lastmod>
+    <lastmod>2021-01-14T07:58:11.925Z</lastmod>
     
   </url>
   
@@ -68,13 +75,6 @@
     <loc>https://shaokang.ga/2020/Build-Cloudflare-worker-with-endpoint/</loc>
     
     <lastmod>2021-01-13T00:07:40.371Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/2021/projects/Simple-Chat-App/</loc>
-    
-    <lastmod>2021-01-12T23:43:14.135Z</lastmod>
     
   </url>
   
