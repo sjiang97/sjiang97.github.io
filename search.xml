@@ -47,7 +47,7 @@
       
         <tags>
             
-            <tag> Nlp.js </tag>
+            <tag> Nlp.js, Expo </tag>
             
         </tags>
       
@@ -72,7 +72,7 @@
       
         <tags>
             
-            <tag> Nlp.js </tag>
+            <tag> Nlp.js, Expo </tag>
             
         </tags>
       
@@ -97,7 +97,7 @@
       
         <tags>
             
-            <tag> Nlp.js </tag>
+            <tag> Nlp.js, Expo </tag>
             
         </tags>
       
@@ -120,6 +120,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> Website, ejs, HTML, JS, Expo, MIP, Nlp.js </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -140,6 +146,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Dialogflow </tag>
+            
+        </tags>
       
     </entry>
     
@@ -162,6 +174,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> JS </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -180,6 +198,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Expo, MIP </tag>
+            
+        </tags>
       
     </entry>
     
@@ -202,6 +226,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> Website </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -211,7 +241,7 @@
       <link href="/2020/Simple-autocorrect-with-Bigram/"/>
       <url>/2020/Simple-autocorrect-with-Bigram/</url>
       
-        <content type="html"><![CDATA[<p>This is a simple auto correct javascript function based on Bi-gram. It will handle input and find any possible similarity based on threshold. It is a part of a coursework. This work is solely on my own. And because of a previous bad experience on posting code, just a short portion of key codes will be shown.</p><a id="more"></a><h3 id="core-function"><a class="markdownIt-Anchor" href="#core-function"></a> Core function</h3><p>The <code>getSimilarLevel</code> function will produce the similarity level between two input words. Basically, it is just to compare and calculate the number of 2-grams that is the same. <code>getTwoGram</code> function is just to generate 2-gram used to compare.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function getTwoGram(data) &#123;</span><br><span class="line">  let toRe = [];</span><br><span class="line">  for (let i = 0; i &lt; data.length-1; i++) &#123;</span><br><span class="line">    toRe.push(data[i] + data[i+1]);</span><br><span class="line">  &#125;</span><br><span class="line">  return toRe;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getSimilarLevel(data1, data2) &#123;</span><br><span class="line">  data1 = data1.toLocaleLowerCase();</span><br><span class="line">  data2 = data2.toLocaleLowerCase();</span><br><span class="line">  const twogram1 = getTwoGram(data1), twogram2 = getTwoGram(data2);</span><br><span class="line">  let count = 0;</span><br><span class="line"></span><br><span class="line">  for (let i of twogram1) &#123;</span><br><span class="line">      if (twogram2.indexOf(i) !== -1) &#123;</span><br><span class="line">          count++;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return count / Math.max(twogram1.length, twogram2.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="possible-way-of-using"><a class="markdownIt-Anchor" href="#possible-way-of-using"></a> Possible way of using:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">let keywords = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]</span><br><span class="line">generateSuggestion(input) &#123;</span><br><span class="line">    let possibleSuggestion = [];</span><br><span class="line"></span><br><span class="line">    for (let i of keywords) &#123;</span><br><span class="line">        let similarity = getSimilarLevel(i, input);</span><br><span class="line">        if(similarity &gt; threshold)</span><br><span class="line">          possibleSuggestion.push([similarity, i]);</span><br><span class="line">    &#125;</span><br><span class="line">    //sort</span><br><span class="line"></span><br><span class="line">    possibleSuggestion.sort();</span><br><span class="line">    possibleSuggestion.reverse();</span><br><span class="line"></span><br><span class="line">    if(possibleSuggestion.length &lt;=6) &#123;</span><br><span class="line">      let toRe = [];</span><br><span class="line">      for(let i = 0;i&lt;possibleSuggestion.length;i++)&#123;</span><br><span class="line">        toRe.push(possibleSuggestion[i][1]);</span><br><span class="line">      &#125;    </span><br><span class="line">      return toRe;    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let toRe = [];</span><br><span class="line"></span><br><span class="line">    for(let i = 0;i&lt;6;i++)&#123;</span><br><span class="line">      toRe.push(possibleSuggestion[i][1]);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    return toRe;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>This is a simple auto correct javascript function based on Bi-gram. It will handle input and find any possible similarity based on threshold. It is a part of a coursework. This work is solely on my own. And because of a previous bad experience on posting code, just a short portion of key codes will be shown.</p><a id="more"></a><h3 id="core-function"><a class="markdownIt-Anchor" href="#core-function"></a> Core function</h3><p>The <code>getSimilarLevel</code> function will produce the similarity level between two input words. Basically, it is just to compare and calculate the number of 2-grams that is the same. <code>getTwoGram</code> function is just to generate 2-gram used to compare.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function getTwoGram(data) &#123;</span><br><span class="line">  let toRe = [];</span><br><span class="line">  for (let i = 0; i &lt; data.length-1; i++) &#123;</span><br><span class="line">    toRe.push(data[i] + data[i+1]);</span><br><span class="line">  &#125;</span><br><span class="line">  return toRe;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getSimilarLevel(data1, data2) &#123;</span><br><span class="line">  data1 = data1.toLocaleLowerCase();</span><br><span class="line">  data2 = data2.toLocaleLowerCase();</span><br><span class="line">  const twogram1 = getTwoGram(data1), twogram2 = getTwoGram(data2);</span><br><span class="line">  let count = 0;</span><br><span class="line"></span><br><span class="line">  for (let i of twogram1) &#123;</span><br><span class="line">      if (twogram2.indexOf(i) !== -1) &#123;</span><br><span class="line">          count++;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return count / Math.max(twogram1.length, twogram2.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="possible-way-of-using"><a class="markdownIt-Anchor" href="#possible-way-of-using"></a> Possible way of using:</h3><p>A word will be pushed to the possible waiting list when they have a similarity level greater than the threshold.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">let keywords = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]</span><br><span class="line">generateSuggestion(input) &#123;</span><br><span class="line">    let possibleSuggestion = [];</span><br><span class="line"></span><br><span class="line">    for (let i of keywords) &#123;</span><br><span class="line">        let similarity = getSimilarLevel(i, input);</span><br><span class="line">        if(similarity &gt; threshold)</span><br><span class="line">          possibleSuggestion.push([similarity, i]);</span><br><span class="line">    &#125;</span><br><span class="line">    //sort</span><br><span class="line"></span><br><span class="line">    possibleSuggestion.sort();</span><br><span class="line">    possibleSuggestion.reverse();</span><br><span class="line"></span><br><span class="line">    if(possibleSuggestion.length &lt;=6) &#123;</span><br><span class="line">      let toRe = [];</span><br><span class="line">      for(let i = 0;i&lt;possibleSuggestion.length;i++)&#123;</span><br><span class="line">        toRe.push(possibleSuggestion[i][1]);</span><br><span class="line">      &#125;    </span><br><span class="line">      return toRe;    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let toRe = [];</span><br><span class="line"></span><br><span class="line">    for(let i = 0;i&lt;6;i++)&#123;</span><br><span class="line">      toRe.push(possibleSuggestion[i][1]);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    return toRe;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -222,6 +252,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> JS </tag>
+            
+        </tags>
       
     </entry>
     
@@ -241,6 +277,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Website, ejs, HTML, JS, Expo, MIP, Nlp.js </tag>
+            
+        </tags>
       
     </entry>
     
@@ -265,7 +307,11 @@
             
             <tag> MIP </tag>
             
+            <tag> JavaFX </tag>
+            
             <tag> choco-solver </tag>
+            
+            <tag> JFoenix </tag>
             
         </tags>
       
@@ -308,6 +354,12 @@
         <content type="html"><![CDATA[<p>In the final project of this course, I tried to focus on finding the correct product rating without golden set and read different papers. At last, I focused on <em>Avoiding Imposters and Delinquents: Adversarial Crowdsourcing and Peer Prediction</em> and write a reading report about it. The original file is in Latex, the following is the generated file. Click read more to see the detail.</p><a id="more"></a> <img src="/2020/projects/639-project/Final_Page_1.jpg"> <img src="/2020/projects/639-project/Final_Page_2.jpg"> <img src="/2020/projects/639-project/Final_Page_3.jpg"> <img src="/2020/projects/639-project/Final_Page_4.jpg"> <img src="/2020/projects/639-project/Final_Page_5.jpg"> <img src="/2020/projects/639-project/Final_Page_6.jpg"> <img src="/2020/projects/639-project/Final_Page_7.jpg">]]></content>
       
       
+      
+        <tags>
+            
+            <tag> Self learning </tag>
+            
+        </tags>
       
     </entry>
     
@@ -484,8 +536,6 @@
             
             <tag> MIP </tag>
             
-            <tag> CPLEX </tag>
-            
         </tags>
       
     </entry>
@@ -656,9 +706,9 @@
       
         <tags>
             
-            <tag> SQL </tag>
-            
             <tag> Website </tag>
+            
+            <tag> SQL </tag>
             
         </tags>
       
@@ -683,9 +733,9 @@
       
         <tags>
             
-            <tag> SQL </tag>
-            
             <tag> Website </tag>
+            
+            <tag> SQL </tag>
             
         </tags>
       
