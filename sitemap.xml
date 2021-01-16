@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shaokang.ga/about/index.html</loc>
+    
+    <lastmod>2021-01-16T17:57:26.635Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shaokang.ga/2020/Energy-smulation-website/</loc>
     
     <lastmod>2021-01-16T03:56:12.851Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>https://shaokang.ga/projects/index.html</loc>
     
     <lastmod>2020-10-15T20:28:47.965Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shaokang.ga/about/index.html</loc>
-    
-    <lastmod>2020-10-14T15:12:42.505Z</lastmod>
     
   </url>
   
